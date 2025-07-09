@@ -11,9 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.culture.review.vo.UserVO;
 
-
-
-
 @Controller
 public class JoinController {
 
@@ -25,8 +22,8 @@ public class JoinController {
 
     @PostMapping("/join-sy")
     public String joinSubmit(@Valid @ModelAttribute UserVO userVO,
-                             BindingResult bindingResult,
-                             Model model) {
+            BindingResult bindingResult,
+            Model model) {
         if (bindingResult.hasErrors()) {
             return "join-sy";
         }
@@ -34,7 +31,5 @@ public class JoinController {
         model.addAttribute("msg", userVO.getName() + "님 회원가입 성공!");
         return "joinSuccess-sy";
     }
-    
-
 
 }
