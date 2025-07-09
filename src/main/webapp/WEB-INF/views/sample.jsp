@@ -5,7 +5,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>Cultural Content Critic | CCC</title>
+    <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
+
     <link href="resources/css/sample.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,9 +20,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <header>
       <div>　</div>
-      <div>Cultural</div>
-      <div>Content</div>
-      <div>Critic</div>
+      <div><a href="/home" id="logo">Cultural</a></div>
+      <div><a href="/home" id="logo">Content</a></div>
+      <div><a href="/home" id="logo">Critic</a></div>
     </header>
 
     <div class="container">
@@ -33,7 +35,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <strong>메뉴</strong><br />
           <ul>
             <li><a href="/home">홈</a></li>
-            <li>게임</li>
+            <li><a href="/gamelist">게임</a></li>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
@@ -178,13 +180,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div style="height: 80px"></div>
       </div>
     </div>
-
-    <!-- <div>
-      <c:forEach items="${tests}" var="t">
-        <div>${t.id}</div>
-        <div>${t.pw}</div>
-      </c:forEach>
-    </div> -->
   </body>
   <script src="resources/js/sample.js"></script>
 </html>

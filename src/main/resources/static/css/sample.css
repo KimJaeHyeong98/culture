@@ -1,3 +1,4 @@
+/* all section view : header, sidebar, search box */
 body {
   font-family: sans-serif;
   margin: 0;
@@ -6,11 +7,13 @@ body {
   flex-direction: column;
   align-items: center;
 
+  background-color: black;
   /* background-image: url("https://images7.alphacoders.com/910/910227.png"); */
   background-image: url("https://livewallp.com/wp-content/uploads/2022/06/Girl-and-Starry-Sky.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+  height: 100vh;
   color: white;
 }
 header {
@@ -19,7 +22,6 @@ header {
   padding: 20px 0;
   font-size: 30px;
   font-family: "Bitcount Grid Double", system-ui;
-  /* border-bottom: 1px solid #cccccc; */
 }
 .container {
   display: flex;
@@ -37,9 +39,49 @@ header {
 
   background-color: rgba(0, 0, 139, 0.2);
 }
+.search-box {
+  display: flex;
+  margin-bottom: 10px;
+  height: 25px;
+}
+.search-box input {
+  flex: 1;
+  border: 1px solid #0077cc;
+  background-color: rgba(0, 0, 139, 0.2);
+  width: 150px;
+  color: white;
+}
+.search-box button {
+  border: 1px solid #0077cc;
+  background-color: rgba(0, 0, 139, 0.2);
+  width: 30px;
+  color: white;
+}
 .search-box button:hover {
   cursor: pointer;
 }
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+  text-decoration: underline;
+}
+a:active {
+  color: white;
+  text-decoration: none;
+}
+#logo {
+  text-decoration: none;
+}
+
+/* home section view */
 .main {
   flex: 1;
   margin-right: 10px;
@@ -66,7 +108,7 @@ header {
 }
 @keyframes fadein {
   from {
-    opacity: 0.1;
+    opacity: 0.2;
   }
   to {
     opacity: 1;
@@ -104,24 +146,6 @@ header {
 .ranking-box h3 {
   margin-top: 0;
 }
-.search-box {
-  display: flex;
-  margin-bottom: 10px;
-  height: 25px;
-}
-.search-box input {
-  flex: 1;
-  border: 1px solid #0077cc;
-  background-color: rgba(0, 0, 139, 0.2);
-  width: 150px;
-  color: white;
-}
-.search-box button {
-  border: 1px solid #0077cc;
-  background-color: rgba(0, 0, 139, 0.2);
-  width: 30px;
-  color: white;
-}
 .toggle-tabs .tab.active {
   color: #0077cc;
   font-weight: bold;
@@ -131,28 +155,4 @@ header {
 }
 .toggle-tabs .tab:hover {
   cursor: pointer;
-}
-
-/* .ranking-list ol.active-list {
-  background-color: #f0f8ff;
-  border: 1px solid #0077cc;
-  padding: 5px;
-  border-radius: 4px;
-} */
-
-a:link {
-  color: white;
-  text-decoration: none;
-}
-a:visited {
-  color: white;
-  text-decoration: none;
-}
-a:hover {
-  color: white;
-  text-decoration: underline;
-}
-a:active {
-  color: white;
-  text-decoration: none;
 }
