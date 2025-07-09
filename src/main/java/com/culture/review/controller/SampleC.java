@@ -14,9 +14,15 @@ public class SampleC {
     private SampleService sampleService;
 
     @GetMapping("/home")
-    public String reviewHome(Model model) {
+    public String cccHome(Model model) {
         // model.addAttribute("tests", sampleService.getAllReview());
         return "sample";
+    }
+
+    @GetMapping("/gamelist")
+    public String cccgamelist(Model model) {
+        // model.addAttribute("tests", sampleService.getAllReview());
+        return "gamelist";
     }
 
 }
