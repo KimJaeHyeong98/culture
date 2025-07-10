@@ -19,10 +19,10 @@ public class SampleC {
         return "sample";
     }
 
-    @GetMapping("/gamelist")
-    public String cccgamelist(Model model) {
-        // model.addAttribute("tests", sampleService.getAllReview());
-        return "gamelist";
-    }
+    // @GetMapping("/gamelist")
+    // public String cccgamelist(Model model) {
+    //     // model.addAttribute("tests", sampleService.getAllReview());
+    //     return "gamelist";
+    // }
 
 }
