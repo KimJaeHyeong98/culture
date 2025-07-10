@@ -1,0 +1,83 @@
+  .account-container {
+   border: 2px solid black;
+  width: 300px;
+  margin: 40px auto;  /* 중앙 정렬 + 위 여백 */
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #6f72a3;
+  box-sizing: border-box;
+  }
+
+  .account-container h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left; /* 왼쪽 정렬 */
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-group button {
+    flex: 1;
+    max-width: 120px; /* 버튼 최대 너비 제한 */
+    background-color: #404ad1;
+    color: white;
+    border: none;
+    padding: 10px 0;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn-group button:hover {
+    background-color: #2980b9;
+  }
+
+/* input 크기 조절 */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+  width: 280px;     /* 너비 조절 */
+  height: 40px;     /* 높이 조절 */
+  padding: 10px;    /* 안쪽 여백 */
+  font-size: 16px;  /* 글씨 크기 */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* 패딩 포함해서 크기 계산 */
+  margin-bottom: 10px; /* 아래 간격 조절 */
+}
+/* 로그인 버튼 */
+.login-btn {
+  width: 100%;
+  max-width: 120px;
+  background-color: #404ad1;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 10px auto 0; /* 가운데 정렬 + 위 간격 */
+}
+/* 로그아웃 버튼 */
+checkIdBtn{
+  width: 100%;
+  max-width: 120px;
+  background-color: #404ad1;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 10px auto 0; /* 가운데 정렬 + 위 간격 */
+}
