@@ -9,6 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
+    <link href="resources/css/gamelist.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,58 +17,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .game-title {
-        padding: 10px;
-        text-align: center;
-        font-size: 30pt;
-      }
-      .game-wrap {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start; /* 좌측 정렬 */
-        gap: 20px; /* 카드 간 간격 */
-        padding: 10px;
-        box-sizing: border-box;
-      }
-
-      .game-review {
-        width: calc((100% - 40px) / 3); /* gap 20px이 2번 들어가니까 40px 빼줘야 함 */
-        height: 200px;
-        display: flex;
-        border-radius: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 10px;
-        gap: 10px;
-        color: white;
-        font-family: sans-serif;
-        box-sizing: border-box;
-      }
-
-      .game-review div:first-child {
-        width: 40%;
-        background-color: gray;
-        border-radius: 5px;
-      }
-
-      .game-review div:last-child {
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        font-size: 15px;
-      }
-
-      .pagination{
-        display: flex;
-        justify-content: center;
-        position: inherit;
-        /* margin-top: 30px;
-        gap: 10px; */
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -123,7 +72,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                 <img src="${game.g_poster_path}" alt="포스터" style="width: 150px;">
                 <div>
                   <div hidden>${game.g_game_id}</div>
-                  <div>평점 : ⭐⭐⭐⭐⭐</div>
+                  <div class="rating" onclick="openModal('${game.g_game_id}')">평점 : ⭐⭐⭐⭐⭐</div>
                   <div>제목 : ${game.g_title}</div>
                   <div>출시일 : ${game.g_release_date}</div>
                   <div>감독 : ${game.g_director}</div>
@@ -133,15 +82,54 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             </c:forEach>
           </div>
             <div class="pagination">
-              <c:forEach var="p" begin="1" end="${totalPage}">
-                <a href="/gamelist?page=${p}" style="${p == currentPage ? 'font-weight:bold' : ''}">
-                  ${p}
-                </a>
-              </c:forEach>
+              <a href="/gamelist?page=1">«</a>
+                <c:forEach var="p" begin="1" end="${totalPage}">
+                  <a href="/gamelist?page=${p}" style="${p == currentPage ? 'font-weight:bold' : ''}">
+                    &nbsp;${p}&nbsp;
+                  </a>
+                </c:forEach>
+              <a href="/gamelist?page=${totalPage}">»</a>
             </div>
         </div>
         <div style="height: 80px"></div>
       </div>
     </div>
+    <!-- 모달 -->
+    <c:forEach var="game" items="${games}">
+      <div id="ratingModal-${game.g_game_id}" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal('${game.g_game_id}')">&times;</span>
+          <h1 class="modal-title">${game.g_title}</h1>
+            <!-- 정렬 탭 -->
+            <div class="sort-options">
+              <span class="sort-button active" onclick="sortReviews('latest', '${game.g_game_id}')">최신순</span> |
+              <span class="sort-button" onclick="sortReviews('rating', '${game.g_game_id}')">평점순</span>
+              ${reviewsMap}
+            </div>
+          <!-- 모달 리뷰 리스트 -->
+          <div class="review-list">
+            <c:forEach var="review" items="${game.reviews}">
+              <div class="review-item">
+                <div class="review-header">
+                  <span class="review-id">ID ksy&nbsp;&nbsp;
+                    <span class="review-stars">⭐⭐⭐⭐⭐</span>
+                  </span>
+                  <p class="review-text" id="text-${review.r_review_id}">${review.r_content}</p>
+                  <textarea class="edit-text" id="edit-${review.r_review_id}" style="display:none;">${review.r_content}</textarea>
+                  <span class="review-icon" onclick="editReview('101')">✏️</span>
+                  <span class="save-icon" id="save-101" style="display:none;" onclick="saveReview('101')">💾</span>
+                </div>
+                <!-- <p class="review-text" id="text-101">개노잼-_-;;</p>
+                <textarea class="edit-text" id="edit-101" style="display:none;">개노잼-_-;;</textarea> -->
+                <div class="review-footer">
+                  <span class="review-date">2025-07-09</span>
+                </div>
+              </div>
+            </c:forEach>
+          </div>
+        </div>
+      </div>
+    </c:forEach>
+    <script src="resources/js/gamelist.js"></script>
   </body>
 </html>
