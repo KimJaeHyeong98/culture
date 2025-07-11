@@ -5,14 +5,16 @@ document.getElementById("checkIdBtn").addEventListener("click", function () {
   const userId = document.getElementById("u_user_id").value;
 
   if (!userId) {
-    document.getElementById("id-check-message").innerText = "아이디를 입력해주세요.";
-    document.getElementById("id-check-message").style.color = "red";
+    document.getElementById("id-check-message").innerText =
+      "아이디를 입력해주세요.";
+    document.getElementById("id-check-message").style.color = "tomato";
+    document.getElementById("id-check-message").style.fontSize = "10px";
     isIdChecked = false;
     checkFormValidity();
     return;
   }
 
-  fetch("checkUserId", {
+  fetch("account/checkUserId", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -22,12 +24,16 @@ document.getElementById("checkIdBtn").addEventListener("click", function () {
     .then((response) => response.text())
     .then((result) => {
       if (result === "AVAILABLE") {
-        document.getElementById("id-check-message").innerText = "사용 가능한 아이디입니다.";
+        document.getElementById("id-check-message").innerText =
+          "사용 가능한 아이디입니다.";
         document.getElementById("id-check-message").style.color = "green";
+        document.getElementById("id-check-message").style.fontSize = "10px";
         isIdChecked = true;
       } else {
-        document.getElementById("id-check-message").innerText = "이미 사용 중인 아이디입니다.";
-        document.getElementById("id-check-message").style.color = "red";
+        document.getElementById("id-check-message").innerText =
+          "이미 사용 중인 아이디.";
+        document.getElementById("id-check-message").style.color = "tomato";
+        document.getElementById("id-check-message").style.fontSize = "10px";
         isIdChecked = false;
       }
       checkFormValidity();
@@ -35,21 +41,26 @@ document.getElementById("checkIdBtn").addEventListener("click", function () {
 });
 
 // 비밀번호 일치 확인
-document.getElementById("u_password_confirm").addEventListener("input", function () {
-  const pw = document.getElementById("u_password").value;
-  const pwConfirm = document.getElementById("u_password_confirm").value;
+document
+  .getElementById("u_password_confirm")
+  .addEventListener("input", function () {
+    const pw = document.getElementById("u_password").value;
+    const pwConfirm = document.getElementById("u_password_confirm").value;
 
-  if (pw !== pwConfirm) {
-    document.getElementById("password-check-message").style.display = "block";
-    document.getElementById("password-check-message").innerText = "비밀번호가 일치하지 않습니다.";
-    isPasswordMatched = false;
-  } else {
-    document.getElementById("password-check-message").style.display = "none";
-    isPasswordMatched = true;
-  }
+    if (pw !== pwConfirm) {
+      document.getElementById("password-check-message").style.display = "block";
+      document.getElementById("password-check-message").innerText =
+        "비밀번호가 일치하지 않습니다.";
+        document.getElementById("password-check-message").style.color = "tomato";
+        document.getElementById("password-check-message").style.fontSize = "10px";
+      isPasswordMatched = false;
+    } else {
+      document.getElementById("password-check-message").style.display = "none";
+      isPasswordMatched = true;
+    }
 
-  checkFormValidity();
-});
+    checkFormValidity();
+  });
 
 // 폼 전체 유효성 검사
 function checkFormValidity() {

@@ -13,7 +13,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
   <body>
     <div class="account-container">
-      <h3>${loginUser.u_user_name}님 환영합니다</h3>
+      <h3>${loginUser.u_user_name}님</h3>
       <div class="btn-group">
         <button onclick="logout()" class="logout-btn">로그아웃</button>
         <button class="logout-btn">내 정보</button>

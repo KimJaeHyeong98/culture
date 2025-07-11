@@ -3,10 +3,11 @@ package com.culture.review.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.ui.Model;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -51,7 +52,7 @@ public class AccountContorller {
 
 
     //회원가입
-    @PostMapping("acount/joinMembership")
+    @PostMapping("/joinMembership")
     public String joinMembership(AccountVO acountVO, Model model) {
         System.out.println("joinMembership -----");
         System.out.println(acountVO);
@@ -61,9 +62,11 @@ public class AccountContorller {
     }
 
     //아이디 중복 체크 
-    @PostMapping("/checkUserId")
-    public ResponseEntity<String> checkUserId(@RequestParam String u_user_id) {
+    @PostMapping("account/checkUserId")
+    public ResponseEntity<String> checkUserId(@RequestParam("u_user_id") String u_user_id) {
+           System.out.println("입력받은 아이디: " + u_user_id); 
         boolean isAvailable = acountServiec.isUserIdAvailable(u_user_id);
+           System.out.println("사용 가능 여부: " + isAvailable);
         return ResponseEntity.ok(isAvailable ? "AVAILABLE" : "DUPLICATE");
     }
 }
