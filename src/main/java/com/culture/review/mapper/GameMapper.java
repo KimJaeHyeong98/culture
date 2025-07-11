@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import com.culture.review.vo.GameVO;
+import com.culture.review.vo.ReviewVO;
 
 @Mapper
 public interface GameMapper {
@@ -39,6 +40,39 @@ public interface GameMapper {
     List<GameVO> selectGameListByPage(Map<String, Integer> param);
 
     @Select("SELECT COUNT(*) FROM g_game")
-        int getGameCount();
+    int getGameCount();
+
+    @Select("""
+        SELECT
+            r.r_review_id,
+            r.r_content_type,
+            r.r_content_id,
+            g.g_title,
+            r.r_content,
+            r.r_recommend_yn,
+            TO_CHAR(r.r_review_date, 'YYYY-MM-DD') AS review_date
+        FROM r_review r
+                JOIN g_game g ON r.r_content_type = 'GAME' AND r.r_content_id = g.g_game_id and g.G_GAME_ID = #{gameId}
+        ORDER BY r.r_content_id
+            """)
+    List<ReviewVO> selectReviewsByGameId(String gameId);
+
+
+    @Select("""
+        SELECT
+            r.r_review_id,
+            r.r_content_type,
+            r.r_content_id,
+            g.g_title,
+            r.r_content,
+            r.r_recommend_yn,
+            TO_CHAR(r.r_review_date, 'YYYY-MM-DD') AS review_date
+        FROM r_review r
+        JOIN g_game g ON r.r_content_type = 'GAME' AND r.r_content_id = g.g_game_id
+        ORDER BY r.r_content_id
+    """)
+    List<ReviewVO> selectAllGameReviews();
+
+
 
 }

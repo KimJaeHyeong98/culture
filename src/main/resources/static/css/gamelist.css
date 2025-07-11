@@ -1,0 +1,186 @@
+.game-title {
+  padding: 10px;
+  text-align: center;
+  font-size: 30pt;
+}
+.game-wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 좌측 정렬 */
+  gap: 20px; /* 카드 간 간격 */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.game-review {
+  width: calc((100% - 40px) / 3); /* gap 20px이 2번 들어가니까 40px 빼줘야 함 */
+  height: 200px;
+  display: flex;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  gap: 10px;
+  color: white;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.game-review div:first-child {
+  width: 40%;
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.game-review div:last-child {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  font-size: 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  position: inherit;
+  /* margin-top: 30px;
+    gap: 10px; */
+}
+
+.rating {
+  cursor: pointer;
+}
+
+.rating:hover {
+  transform: scale(1.05);
+  color: #ffe600;
+}
+
+/* 모달 기본 숨김 상태 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+/* 모달창 안쪽 컨텐츠 */
+.modal-content {
+  background-color: rgba(53, 53, 53, 0.7);
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 900px;
+  height: 650px;
+  position: relative;
+}
+
+/* 닫기 버튼 X */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* 모달 리뷰 sort */
+.sort-options {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 14px;
+  color: white;
+  gap: 10px;
+  margin: 10px 5px 5px 0;
+}
+
+.sort-button {
+  cursor: pointer;
+  color: #aaa;
+}
+
+.sort-button.active {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 모달 리뷰 */
+.review-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-item {
+  background-color: #d9d9d9;
+  border-radius: 15px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 11px;
+}
+
+.review-text {
+  margin: 8px 0;
+  font-size: 17px;
+  color: #000000;
+}
+
+.edit-text {
+  width: 100%;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-sizing: border-box;
+  resize: none;
+  font-family: inherit;
+}
+
+.save-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: lightgreen;
+}
+
+.save-icon:hover {
+  color: green;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: right;
+  font-size: 12px;
+  color: #555;
+}
+
+.review-icon {
+  cursor: pointer;
+}
+
+.review-id {
+  color: #000000;
+}

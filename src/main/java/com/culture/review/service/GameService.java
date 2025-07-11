@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.culture.review.mapper.GameMapper;
 import com.culture.review.vo.GameVO;
+import com.culture.review.vo.ReviewVO;
 
 @Service
 public class GameService {
@@ -28,6 +29,12 @@ public class GameService {
     }
 
     public int getTotalGameCount() {
-        return gameMapper.getGameCount();
+        int count = gameMapper.getGameCount();
+        System.out.println(count );
+        return count;
+    }
+        public List<ReviewVO> getReviewsByGameId(String gameId) {
+            return gameMapper.selectReviewsByGameId(gameId);
+        
     }
 }
