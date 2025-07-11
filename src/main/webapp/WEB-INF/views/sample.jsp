@@ -9,7 +9,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -45,15 +44,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>랜덤</li>
           </ul>
         </div>
-        <div class="box">
-          <strong>내 계정</strong><br />
-          <ul>
-            <li>로그인</li>
-            <li>회원가입</li>
-            <li>내 정보</li>
-          </ul>
-        </div>
+        <div class="include-wrapper">
+        <jsp:include page="${content}"></jsp:include>
       </div>
+      </div>
+
+      
 
       <div class="main">
         <div class="recommendation">

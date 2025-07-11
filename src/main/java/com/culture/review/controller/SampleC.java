@@ -15,7 +15,7 @@ public class SampleC {
 
     @GetMapping("/home")
     public String cccHome(Model model) {
-        // model.addAttribute("tests", sampleService.getAllReview());
+        model.addAttribute("content", "Account/acountMain.jsp");
         return "sample";
     }
 
