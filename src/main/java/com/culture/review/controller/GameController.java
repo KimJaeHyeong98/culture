@@ -22,26 +22,26 @@ public class GameController {
 
     @GetMapping("/gamelist")
     public String showGameList(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
-    int pageSize = 9;
+        int pageSize = 9;
 
-    List<GameVO> games = gameService.getGameListByPage(page, pageSize);
-    int totalCount = gameService.getTotalGameCount();
-    int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+        List<GameVO> games = gameService.getGameListByPage(page, pageSize);
+        int totalCount = gameService.getTotalGameCount();
+        int totalPage = (int) Math.ceil((double) totalCount / pageSize);
 
-    // Map<String, List<ReviewVO>> reviewsMap = new HashMap<>();
-    for (GameVO game : games) {
-        game.setReviews(gameService.getReviewsByGameId(game.getG_game_id()));
-        // List<ReviewVO> reviews = gameService.getReviewsByGameId(game.getG_game_id());
-        // reviewsMap.put(game.getG_game_id(), reviews);
+        // Map<String, List<ReviewVO>> reviewsMap = new HashMap<>();
+        for (GameVO game : games) {
+            game.setReviews(gameService.getReviewsByGameId(game.getG_game_id()));
+            // List<ReviewVO> reviews = gameService.getReviewsByGameId(game.getG_game_id());
+            // reviewsMap.put(game.getG_game_id(), reviews);
+        }
+
+        model.addAttribute("games", games);
+        model.addAttribute("currentPage", page);
+        // model.addAttribute("reviewsMap", reviewsMap);
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("content", "account/acountMain.jsp");
+        System.out.println(totalPage);
+
+        return "gamelist"; // JSP 페이지명
     }
-
-    model.addAttribute("games", games);
-    model.addAttribute("currentPage", page);
-    // model.addAttribute("reviewsMap", reviewsMap);
-    model.addAttribute("totalPage", totalPage);
-    model.addAttribute("content", "account/acountMain.jsp");
-    System.out.println(totalPage);
-
-    return "gamelist"; // JSP 페이지명
-}
 }

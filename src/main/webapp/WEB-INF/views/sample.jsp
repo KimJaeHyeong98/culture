@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <title>Cultural Content Critic | CCC</title>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
-      <link href="resources/css/sample.css" rel="stylesheet" />
+    <link href="resources/css/sample.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,18 +38,16 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-            <li>유저 리뷰</li>
+            <li><a href="/latestReview">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
           </ul>
         </div>
         <div class="include-wrapper">
-        <jsp:include page="${content}"></jsp:include>
+          <jsp:include page="${content}"></jsp:include>
+        </div>
       </div>
-      </div>
-
-      
 
       <div class="main">
         <div class="recommendation">
