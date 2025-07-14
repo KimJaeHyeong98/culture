@@ -6,20 +6,25 @@ import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpSession;
 
 @Service
-public class AccountServiec {
+public class AccountService {
 
     @Autowired
     private AccountMapper acountMapper;
+
+    // 로그인 체크처리
+    public boolean isLoggedIn(HttpSession session) {
+        return session != null && session.getAttribute("loginUser") != null;
+    }
 
     public String loginDo(AccountVO acountVO, HttpSession session, Model model) {
         AccountVO loginUser = acountMapper.login(acountVO);
 
         if (loginUser != null) {
             session.setAttribute("loginUser", loginUser);
-            return "Account/good.jsp"; // 로그인 성공 시 보여줄 내부 JSP
+            return "account/good.jsp"; // 로그인 성공 시 보여줄 내부 JSP
         } else {
             model.addAttribute("loginFail", true);
-            return "Account/login.jsp"; // 로그인 실패 시 다시 로그인 화면
+            return "account/login.jsp"; // 로그인 실패 시 다시 로그인 화면
         }
     }
 
@@ -31,8 +36,7 @@ public class AccountServiec {
 
     }
 
-
-      public boolean isUserIdAvailable(String u_user_id) {
+    public boolean isUserIdAvailable(String u_user_id) {
         return acountMapper.countUserId(u_user_id) == 0;
     }
 }

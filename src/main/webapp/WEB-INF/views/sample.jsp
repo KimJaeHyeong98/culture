@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <title>Cultural Content Critic | CCC</title>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
-    <link href="resources/css/sample.css" rel="stylesheet" />
+      <link href="resources/css/sample.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

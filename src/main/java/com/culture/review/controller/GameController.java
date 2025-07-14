@@ -20,7 +20,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping("/gamelist")
-    public String showGameList(@RequestParam(defaultValue = "1") int page, Model model) {
+    public String showGameList(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
     int pageSize = 9;
 
     List<GameVO> games = gameService.getGameListByPage(page, pageSize);
@@ -30,6 +30,7 @@ public class GameController {
     model.addAttribute("games", games);
     model.addAttribute("currentPage", page);
     model.addAttribute("totalPage", totalPage);
+    model.addAttribute("content", "account/acountMain.jsp");
     System.out.println(totalPage);
 
     return "gamelist"; // JSP 페이지명
