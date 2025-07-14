@@ -8,7 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-     <link href="resources/css/account.css" rel="stylesheet" />
+     <link href="/resources/css/account.css" rel="stylesheet" />
 
   </head>
 <body>
@@ -29,6 +29,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </form>
   </div>
 
-  <script src="resources/js/account.js"></script>
+  <script src="/resources/js/account.js"></script>
 </body>
 </html>

@@ -39,6 +39,7 @@ public class GameController {
     model.addAttribute("currentPage", page);
     // model.addAttribute("reviewsMap", reviewsMap); // ✨ JSP에서 사용 가능
     model.addAttribute("totalPage", totalPage);
+    model.addAttribute("content", "account/acountMain.jsp");
     System.out.println(totalPage);
 
     return "gamelist"; // JSP 페이지명
