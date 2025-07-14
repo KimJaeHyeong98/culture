@@ -1,0 +1,109 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.lreview-title {
+  padding: 10px;
+  text-align: center;
+  font-size: 30pt;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.lreview-wrapper {
+  width: 1100px;
+  margin: 30px auto;
+  padding: 30px;
+  display: block;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+.lreview-toolbar {
+  grid-column: span 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-box {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 200px;
+  font-size: 14px;
+}
+
+.search-btn {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.sort-type {
+  font-size: 14px;
+  color: white;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.lreview-item {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+  margin: 20px;
+}
+
+.lreview-item:hover {
+  transform: translateY(-5px);
+}
+
+.lreview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-id {
+  background: #444;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.review-stars {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.lreview-icon {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.review-text {
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #f0f0f0;
+}
+
+.review-date {
+  font-size: 12px;
+  text-align: right;
+  color: #ccc;
+}

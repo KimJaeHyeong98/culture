@@ -8,22 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.culture.review.service.SampleService;
 
 @Controller
-public class SampleC {
+public class LatestReviewC {
+    
 
     @Autowired
     private SampleService sampleService;
 
-    @GetMapping("/home")
-    public String cccHome(Model model) {
+    @GetMapping("/latestReview")
+    public String cccLatestReview(Model model) {
         model.addAttribute("content", "account/acountMain.jsp");
-        return "sample";
+        return "latestReview";
     }
-
-    // @GetMapping("/latestReview")
-    // public String cccLatestReview(Model model) {
-    //     model.addAttribute("content", "account/acountMain.jsp");
-    //     return "latestReview";
-    // }
 
     // @GetMapping("/gamelist")
     // public String cccgamelist(Model model) {

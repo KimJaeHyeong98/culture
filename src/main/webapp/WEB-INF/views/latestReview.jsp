@@ -9,8 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
-    <!-- <link href="resources/css/gamelist.css" rel="stylesheet" /> -->
-
+    <!-- <link href="resources/css/latestreview.css" rel="stylesheet" /> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -57,7 +56,63 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             background-color: rgba(0, 0, 139, 0.2);
             height: 774px;
           "
-        ></div>
+        >
+          <!-- 최신리뷰 메인페이지 -->
+          <div class="lreview-title">최신 리뷰</div>
+            <div class="lreview-wrapper">
+              <div class="lreview-toolbar">
+                <input type="text" class="search-box" placeholder="ID 검색" />
+                <button class="search-btn">🔍</button>
+                <span class="sort-type">최신순 | 평점순</span>
+              </div>
+
+                <div class="lreview-list">
+                    <!-- 반복해서 리뷰 출력될 부분 -->
+                    <div class="lreview-item">
+                      <div class="lreview-header">
+                        <span class="user-id">ID ksy</span>
+                        <span class="review-stars">⭐ ⭐ ⭐ ⭐ ⭐</span>
+                        <span class="lreview-icon">✏️</span>
+                      </div>
+                      <div class="review-text">[어서오세요 동물의 숲] 쭈니가 잘생겼어요~❤</div>
+                      <div class="review-date">2025-07-09</div>
+                    </div>
+
+                    <!-- 리뷰2 -->
+                     <div class="lreview-item">
+                      <div class="lreview-header">
+                        <span class="user-id">ID ksy</span>
+                        <span class="review-stars">⭐ ⭐ ⭐ ⭐ ⭐</span>
+                        <span class="lreview-icon">✏️</span>
+                      </div>
+                      <div class="review-text">[명탐정 코난 극장판] 너무너무재밋엇어욤~~ 또 보고싶어용~~^^*</div>
+                      <div class="review-date">2025-07-09</div>
+                    </div>
+
+                    <!-- 리뷰3 -->
+                     <div class="lreview-item">
+                      <div class="lreview-header">
+                        <span class="user-id">ID ksy</span>
+                        <span class="review-stars">⭐ ⭐ ⭐</span>
+                        <span class="lreview-icon">✏️</span>
+                      </div>
+                      <div class="review-text">[쥬라기 월드: 새로운 시작] 그냥 그랬음</div>
+                      <div class="review-date">2025-07-09</div>
+                    </div>
+
+                    <!-- 리뷰4 -->
+                     <div class="lreview-item">
+                      <div class="lreview-header">
+                        <span class="user-id">ID ksy</span>
+                        <span class="review-stars">⭐ ⭐ ⭐ ⭐ ⭐</span>
+                        <span class="lreview-icon">✏️</span>
+                      </div>
+                      <div class="review-text">[쥬라기 월드: 새로운 시작] 공룡이 귀여워요~</div>
+                      <div class="review-date">2025-07-09</div>
+                    </div>
+
+            </div>
+          </div>
         <div style="height: 80px"></div>
       </div>
     </div>
