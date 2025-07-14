@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.culture.review.service.GameService;
 import com.culture.review.vo.GameVO;
+import com.culture.review.vo.ReviewVO;
 
 @Controller
 public class GameController {
@@ -27,8 +28,16 @@ public class GameController {
     int totalCount = gameService.getTotalGameCount();
     int totalPage = (int) Math.ceil((double) totalCount / pageSize);
 
+    // Map<String, List<ReviewVO>> reviewsMap = new HashMap<>();
+    for (GameVO game : games) {
+        game.setReviews(gameService.getReviewsByGameId(game.getG_game_id()));
+        // List<ReviewVO> reviews = gameService.getReviewsByGameId(game.getG_game_id());
+        // reviewsMap.put(game.getG_game_id(), reviews);
+    }
+
     model.addAttribute("games", games);
     model.addAttribute("currentPage", page);
+    // model.addAttribute("reviewsMap", reviewsMap); // ✨ JSP에서 사용 가능
     model.addAttribute("totalPage", totalPage);
     model.addAttribute("content", "account/acountMain.jsp");
     System.out.println(totalPage);
