@@ -7,8 +7,8 @@ import lombok.Data;
 import java.sql.Date;
 
 @Data
-public class RegisterVO {
-
+public class MovieVO {
+    private int m_movie_id;
     private String m_title;
     private Date m_release_date;
     private String m_director;
