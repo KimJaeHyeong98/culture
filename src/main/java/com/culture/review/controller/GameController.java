@@ -15,6 +15,9 @@ import com.culture.review.vo.GameVO;
 import com.culture.review.vo.ReviewVO;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class GameController {
@@ -44,11 +47,11 @@ public class GameController {
         System.out.println(totalPage);
 
         // 로그인 여부에 따라 포함할 JSP 결정
-    if (session.getAttribute("loginUser") != null) {
-        model.addAttribute("content", "account/good.jsp"); // 로그인한 사용자용
-    } else {
-        model.addAttribute("content", "account/acountMain.jsp"); // 비로그인 사용자용
-    }
+        if (session.getAttribute("loginUser") != null) {
+            model.addAttribute("content", "account/good.jsp"); // 로그인한 사용자용
+        } else {
+            model.addAttribute("content", "account/acountMain.jsp"); // 비로그인 사용자용
+        }
 
     
        return"gamelist"; // JSP 페이지명
