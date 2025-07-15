@@ -98,17 +98,6 @@ public class AccountContorller {
         return ResponseEntity.ok(isAvailable ? "AVAILABLE" : "DUPLICATE");
     }
 
-    // 신작 등록 폼 
-    @PostMapping("account/register")
-    public String registerAdd(Model model) {
-
-        
-         model.addAttribute("content", "acountMain.jsp");
-        return "account/registerMain";
-    }
-
-
-
     // 마이페이지 컨트롤러
     @GetMapping("/mypage")
     public String mypage(HttpSession session, Model model) {

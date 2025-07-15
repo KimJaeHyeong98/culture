@@ -22,13 +22,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
           <button class="register-btn" onclick="register()">신작 등록</button>
         </div>
       </c:if>
-      <!-- 숨겨진 POST 전송용 form -->
-      <form
-        id="registerForm"
-        action="${pageContext.request.contextPath}/account/register"
-        method="post"
-        style="display: none"
-      ></form>
 
       <div class="btn-group">
         <button onclick="logout()" class="logout-btn">로그아웃</button>
@@ -45,7 +38,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       }
     }
     function register() {
-      document.getElementById("registerForm").submit();
+       location.href = "account/register";
     }
   </script>
 </html>
