@@ -134,6 +134,7 @@
   border-radius: 15px;
   padding: 15px;
   font-size: 14px;
+  height: 170px;
 }
 
 .review-header {
@@ -141,12 +142,22 @@
   justify-content: space-between;
   font-weight: bold;
   margin-bottom: 11px;
+  align-items: center;
+}
+
+.review-left,
+.review-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .review-text {
-  margin: 8px 0;
+  display: flex;
+  margin: 8px 8px;
   font-size: 17px;
   color: #000000;
+  align-items: center;
 }
 
 .edit-text {
@@ -178,9 +189,33 @@
 }
 
 .review-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  margin: 8px 0;
+  font-size: 17px;
   cursor: pointer;
 }
 
 .review-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #858585;
+  border-radius: 20px;
+  padding: 0px 25px;
+  font-weight: bold;
+  height: 32px;
   color: #000000;
+  margin: 8px 0;
+}
+
+.review-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  margin: 8px 0;
+  font-size: 17px;
 }
