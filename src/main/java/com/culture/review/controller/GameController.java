@@ -26,30 +26,32 @@ public class GameController {
     public String showGameList(@RequestParam(name = "page", defaultValue = "1") int page, Model model,HttpSession session) {
     int pageSize = 9;
 
-    List<GameVO> games = gameService.getGameListByPage(page, pageSize);
-    int totalCount = gameService.getTotalGameCount();
-    int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+        List<GameVO> games = gameService.getGameListByPage(page, pageSize);
+        int totalCount = gameService.getTotalGameCount();
+        int totalPage = (int) Math.ceil((double) totalCount / pageSize);
 
-    // Map<String, List<ReviewVO>> reviewsMap = new HashMap<>();
-    for (GameVO game : games) {
-        game.setReviews(gameService.getReviewsByGameId(game.getG_game_id()));
-        // List<ReviewVO> reviews = gameService.getReviewsByGameId(game.getG_game_id());
-        // reviewsMap.put(game.getG_game_id(), reviews);
-    }
+        // Map<String, List<ReviewVO>> reviewsMap = new HashMap<>();
+        for (GameVO game : games) {
+            game.setReviews(gameService.getReviewsByGameId(game.getG_game_id()));
+            // List<ReviewVO> reviews = gameService.getReviewsByGameId(game.getG_game_id());
+            // reviewsMap.put(game.getG_game_id(), reviews);
+        }
 
-    model.addAttribute("games", games);
-    model.addAttribute("currentPage", page);
-    // model.addAttribute("reviewsMap", reviewsMap);
-    model.addAttribute("totalPage", totalPage);
+        model.addAttribute("games", games);
+        model.addAttribute("currentPage", page);
+        // model.addAttribute("reviewsMap", reviewsMap);
+        model.addAttribute("totalPage", totalPage);
+        System.out.println(totalPage);
 
-  // 로그인 여부에 따라 포함할 JSP 결정
+        // 로그인 여부에 따라 포함할 JSP 결정
     if (session.getAttribute("loginUser") != null) {
         model.addAttribute("content", "account/good.jsp"); // 로그인한 사용자용
     } else {
         model.addAttribute("content", "account/acountMain.jsp"); // 비로그인 사용자용
     }
-    System.out.println(totalPage);
 
-    return "gamelist"; // JSP 페이지명
-}
+    
+       return"gamelist"; // JSP 페이지명
+    }
+
 }

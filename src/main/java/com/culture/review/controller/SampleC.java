@@ -26,6 +26,12 @@ public class SampleC {
         return "sample";
     }
 
+    @GetMapping("/latestReview")
+    public String cccLatestReview(Model model) {
+        model.addAttribute("content", "account/acountMain.jsp");
+        return "latestReview";
+    }
+
     // @GetMapping("/gamelist")
     // public String cccgamelist(Model model) {
     // // model.addAttribute("tests", sampleService.getAllReview());
