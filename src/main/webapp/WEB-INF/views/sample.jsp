@@ -46,7 +46,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-            <li><a href="/latestReview">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
@@ -184,4 +184,5 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </div>
   </body>
   <script src="resources/js/sample.js"></script>
+  <script src="resources/js/latestReview-all.js"></script>
 </html>
