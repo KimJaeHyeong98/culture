@@ -1,12 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<% 
-  if (session.getAttribute("loginUser") == null) {
-    response.sendRedirect("login");
-    return; 
-  } 
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%> <% if
+(session.getAttribute("loginUser") == null) { response.sendRedirect("login");
+return; } %>
 
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
@@ -33,7 +29,10 @@
 
       <div class="btn-group">
         <button onclick="logout()" class="logout-btn">로그아웃</button>
-        <button class="logout-btn">내 정보</button>
+
+        <form action="${ctx}/myPageInfo" method="post" style="display:contents;">
+          <button type="submit" class="logout-btn">내 정보</button>
+        </form>
       </div>
     </div>
   </body>

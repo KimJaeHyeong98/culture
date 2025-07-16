@@ -1,0 +1,63 @@
+.info-main {
+  display: grid;
+  place-items: center;
+  border: 1px solid #0077cc;
+  background-color: rgba(0, 0, 139, 0.1);
+  height: 700px;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.user-info-list {
+  width: 65%;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  row-gap: 20px;
+  column-gap: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.label {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: left;
+}
+
+.value {
+  color: #ffebeb;
+  font-size: 18px;
+  text-align: right;
+}
+
+.info-btn-group {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.info-btn {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.info-btn:hover {
+  background-color: #1f6391;
+}
+
+.info-btn.delete {
+  background-color: #e74c3c;
+}
+
+.info-btn.delete:hover {
+  background-color: #c0392b;
+}
