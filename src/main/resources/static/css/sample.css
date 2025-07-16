@@ -55,6 +55,7 @@ header {
   border: 1px solid #0077cc;
   background-color: rgba(0, 0, 139, 0.2);
   width: 30px;
+  height: 30px;
   color: white;
 }
 .search-box button:hover {
