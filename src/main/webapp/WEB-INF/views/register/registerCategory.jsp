@@ -10,6 +10,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
     <link href="/resources/css/account.css" rel="stylesheet" />
     <link href="/resources/css/sample.css" rel="stylesheet" />
+    <link href="/resources/css/register.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,113 +18,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
       rel="stylesheet"
     />
-
-    <style>
-.register-main {
-  border: 1px solid #0077cc;
-  background-color: rgba(0, 0, 139, 0.1);
-  height: auto;
-  width: 1000px;
-  margin: 0 auto;
-  padding: 30px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.content-box {
-  flex: 1;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  min-height: 400px;
-}
-
-.content-box h3 {
-  text-align: center;
-  margin-bottom: 15px;
-  color: #0077cc;
-}
-
-.content-box ul {
-  flex: 1;              /* 남은 공간 꽉 채우기 */
-  list-style: none;
-  padding: 0;
-  margin: 0 0 15px 0;
-  overflow-y: auto;     /* 내용이 많으면 세로 스크롤 */
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-}
-
-.content-box li {
-  /* padding: 6px 8px; */
-  border: 1px solid black;
-   background-color:#ddd;
-   color: black;
-  cursor: default;
-  margin-bottom: 10px;
-}
-
-/* .content-box li:hover {
-  background-color: black;
-} */
-
-.load-button {
-  padding: 8px 12px;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.load-button:hover {
-  background-color: #005fa3;
-}
-
-
-/* 모달 */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.modal-content {
-  background-color: rgb(190, 181, 181);
-  padding: 20px;
-  border-radius: 12px;
-  width: 300px;
-}
-
-.hidden {
-  display: none;
-}
-.category-select {
-  display: block;
-  width: 100%;
-  padding: 6px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-    </style>
   </head>
   <body>
     <header>
@@ -234,9 +128,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </form>
   </div>
 </div>
-
-
-
    <script src="/resources/js/register.js"></script>
   </body>
 </html>

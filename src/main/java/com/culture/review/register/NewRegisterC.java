@@ -21,7 +21,7 @@ import com.culture.review.Account.AccountVO;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class NewRegister {
+public class NewRegisterC {
 
     @Autowired
     private RegisterService registerService;

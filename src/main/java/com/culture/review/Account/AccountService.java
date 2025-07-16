@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 public class AccountService {
 
     @Autowired
-    private AccountMapper acountMapper;
+    private AccountMapper accountMapper;
 
     // 로그인 체크처리
     public boolean isLoggedIn(HttpSession session) {
@@ -17,7 +17,7 @@ public class AccountService {
     }
 
     public String loginDo(AccountVO acountVO, HttpSession session, Model model) {
-        AccountVO loginUser = acountMapper.login(acountVO);
+        AccountVO loginUser = accountMapper.login(acountVO);
 
         if (loginUser != null) {
             session.setAttribute("loginUser", loginUser);
@@ -29,7 +29,7 @@ public class AccountService {
     }
 
     public void addMembership(AccountVO acountVO, Model model) {
-        if (acountMapper.insertMembership(acountVO) == 1) {
+        if (accountMapper.insertMembership(acountVO) == 1) {
             System.out.println("add Membership success");
             model.addAttribute("addMembership", true);
         }
@@ -37,6 +37,22 @@ public class AccountService {
     }
 
     public boolean isUserIdAvailable(String u_user_id) {
-        return acountMapper.countUserId(u_user_id) == 0;
+        return accountMapper.countUserId(u_user_id) == 0;
     }
+
+    // 회원 정보 select
+    public AccountVO getAccountByPk(int pk) {
+        return accountMapper.selectAccountByPk(pk);
+    }
+
+    // 회원 정보 update
+    public int updateAccount(AccountVO vo) {
+        return accountMapper.updateAccount(vo);
+    }
+
+    // 회원 정보 delect
+    public int deleteAccountByPk(int pk) {
+        return accountMapper.deleteByPk(pk);
+    }
+
 }
