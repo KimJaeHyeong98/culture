@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 public class AccountContorller {
 
     @Autowired
-    private AccountService acountServiec;
+    private AccountService accountService;
 
     @GetMapping("login")
     public String acountLogin(Model model) {
@@ -32,7 +34,7 @@ public class AccountContorller {
 
     @PostMapping("/logindo")
     public String loginDo(AccountVO acountVO, HttpSession session, Model model) {
-        String loginpage = acountServiec.loginDo(acountVO, session, model);
+        String loginpage = accountService.loginDo(acountVO, session, model);
 
         if ("Account/good.jsp".equals(loginpage)) {
             // 로그인 성공 시 리다이렉트
@@ -46,7 +48,7 @@ public class AccountContorller {
 
     @GetMapping("/goodpage")
     public String goodPage(HttpServletResponse response, HttpSession session, Model model) {
-        if (!acountServiec.isLoggedIn(session)) {
+        if (!accountService.isLoggedIn(session)) {
             return "redirect:/login";
         }
 
@@ -84,7 +86,7 @@ public class AccountContorller {
     public String joinMembership(AccountVO acountVO, Model model) {
         System.out.println("joinMembership -----");
         System.out.println(acountVO);
-        acountServiec.addMembership(acountVO, model);
+        accountService.addMembership(acountVO, model);
         model.addAttribute("content", "account/acountMain.jsp");
         return "sample";
     }
@@ -93,25 +95,86 @@ public class AccountContorller {
     @PostMapping("account/checkUserId")
     public ResponseEntity<String> checkUserId(@RequestParam("u_user_id") String u_user_id) {
         System.out.println("입력받은 아이디: " + u_user_id);
-        boolean isAvailable = acountServiec.isUserIdAvailable(u_user_id);
+        boolean isAvailable = accountService.isUserIdAvailable(u_user_id);
         System.out.println("사용 가능 여부: " + isAvailable);
         return ResponseEntity.ok(isAvailable ? "AVAILABLE" : "DUPLICATE");
     }
 
+    // // 마이페이지 컨트롤러
+    // @GetMapping("/mypage")
+    // public String mypage(HttpSession session, Model model) {
+    // AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+
+    // if (loginUser == null) {
+    // // 로그인 안 된 경우 로그인 페이지로 리다이렉트
+    // model.addAttribute("content", "account/login.jsp");
+    // return "sample";
+    // }
+
+    // // 로그인된 사용자일 경우 처리
+    // model.addAttribute("user", loginUser);
+    // model.addAttribute("content", "account/mypage.jsp");
+    // return "sample";
+    // }
+
     // 마이페이지 컨트롤러
-    @GetMapping("/mypage")
-    public String mypage(HttpSession session, Model model) {
+    @PostMapping("/myPageInfo")
+    public String showMyPage(HttpSession session, Model model) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+        if (loginUser == null) {
+            return "redirect:/login";
+        }
+
+        int pk = loginUser.getU_user_pk();
+        AccountVO account = accountService.getAccountByPk(pk);
+        System.out.println(account);
+        model.addAttribute("userInfo", account);
+        model.addAttribute("content", "good.jsp");
+        return "account/accountInfo";
+    }
+
+    // 비동기 회원정보 수정
+    @PostMapping("/updateAccount")
+    @ResponseBody
+    public String updateAccount(@RequestBody AccountVO accountVO, HttpSession session, Model model) {
         AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
 
         if (loginUser == null) {
-            // 로그인 안 된 경우 로그인 페이지로 리다이렉트
-            model.addAttribute("content", "account/login.jsp");
+            model.addAttribute("content", "account/acountMain.jsp");
             return "sample";
         }
 
-        // 로그인된 사용자일 경우 처리
-        model.addAttribute("user", loginUser);
-        model.addAttribute("content", "account/mypage.jsp");
-        return "sample";
+        accountVO.setU_user_pk(loginUser.getU_user_pk()); // 세션에서 pk 설정
+        int updatedCount = accountService.updateAccount(accountVO); // Service 호출
+
+        if (updatedCount > 0) {
+            // 세션도 최신 상태로 갱신
+            AccountVO refreshed = accountService.getAccountByPk(loginUser.getU_user_pk());
+            session.setAttribute("loginUser", refreshed);
+            return "success";
+        } else {
+            return "fail";
+        }
     }
+
+    // 비동기 회원 정보 삭제
+    @PostMapping("/deleteAccount")
+    @ResponseBody
+    public String deleteAccount(HttpSession session, Model model) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+          model.addAttribute("content", "account/acountMain.jsp");
+            return "sample";
+        }
+
+        int deleted = accountService.deleteAccountByPk(loginUser.getU_user_pk());
+        if (deleted > 0) {
+            session.invalidate(); // 세션 초기화
+            return "success";
+        } else {
+            return "fail";
+        }
+    }
+
 }
