@@ -25,6 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
           const list = document.getElementById(listId);
           list.innerHTML = ""; // 기존 목록 초기화
 
+          // ✅ 결과가 없을 경우 메시지 출력
+          if (data.length === 0) {
+            const li = document.createElement("li");
+            li.textContent = "카테고리 없는 항목이 없습니다.";
+            li.style.color = "#888";
+            li.style.textAlign = "center";
+            li.style.padding = "10px";
+            list.appendChild(li);
+            return;
+          }
+
           data.forEach((item) => {
             const li = document.createElement("li");
             li.innerHTML = `
@@ -99,36 +110,37 @@ function removeCategorySelect() {
   }
 }
 
+document
+  .getElementById("categoryForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-document.getElementById("categoryForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+    const movieId = document.getElementById("selectedMovieId").value;
+    const selects = document.querySelectorAll(".category-select");
 
-  const movieId = document.getElementById("selectedMovieId").value;
-  const selects = document.querySelectorAll(".category-select");
+    const categoryIds = Array.from(selects)
+      .map((select) => select.value)
+      .filter((val) => val); // 빈 값 제외
 
-  const categoryIds = Array.from(selects)
-    .map(select => select.value)
-    .filter(val => val); // 빈 값 제외
+    if (!movieId || categoryIds.length === 0) {
+      alert("카테고리를 하나 이상 선택해주세요.");
+      return;
+    }
 
-  if (!movieId || categoryIds.length === 0) {
-    alert("카테고리를 하나 이상 선택해주세요.");
-    return;
-  }
-
-  fetch("/register/assign-categories", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      movieId: movieId,
-      categoryIds: categoryIds
+    fetch("/register/assign-categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movieId: movieId,
+        categoryIds: categoryIds,
+      }),
     })
-  })
-    .then(res => res.text())
-    .then(msg => {
-      alert("카테고리 등록 완료"); // ex) "카테고리 등록 완료!"
-      closeModal(); // 모달 닫기
-    })
-    .catch(err => console.error("카테고리 등록 실패:", err));
-});
+      .then((res) => res.text())
+      .then((msg) => {
+        alert("카테고리 등록 완료"); // ex) "카테고리 등록 완료!"
+        closeModal(); // 모달 닫기
+      })
+      .catch((err) => console.error("카테고리 등록 실패:", err));
+  });
