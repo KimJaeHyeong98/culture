@@ -224,6 +224,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
           <button type="submit">게임 등록하기</button>
         </form>
+        
       </div>
     </div>
     <button
@@ -231,15 +232,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       onclick="cast_of_categories()"
       class="cast_of_categories"
     >
-      장르 등록하러가기
+      장르 출연진 등록하러가기
     </button>
-    <button
-      type="submit"
-      onclick="actoradd()"
-      class="cast_of_categories"
-    >
-      출연진 등록하러가기
-    </button>
+  
 
     <c:if test="${registerSuccess}">
       <script>
