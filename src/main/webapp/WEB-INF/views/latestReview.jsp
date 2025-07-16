@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>browse game | CCC</title>
+    <title>browse latest review | CCC</title>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
@@ -107,8 +107,16 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="container">
       <div class="sidebar">
         <div class="search-box">
-          <input type="text" placeholder="search" />
-          <button>></button>
+          <input
+            style="background-color: rgba(0, 0, 139, 0.2); border-radius: 0px"
+            type="text"
+            placeholder="search"
+          />
+          <button
+            style="background-color: rgba(0, 0, 139, 0.2); border-radius: 0px"
+          >
+            >
+          </button>
         </div>
         <div class="box">
           <strong>메뉴</strong><br />
