@@ -1,9 +1,9 @@
 .account-container {
   border: 1px solid #0077cc;
   width: 180px;
-  margin: 40px auto; /* 중앙 정렬 + 위 여백 */
+  margin: 0px auto; /* 중앙 정렬 + 위 여백 */
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: rgba(0, 0, 139, 0.2);
   box-sizing: border-box;
 }
@@ -23,7 +23,7 @@
 .btn-group button {
   flex: 1;
   max-width: 120px; /* 버튼 최대 너비 제한 */
-  background-color: #4f59e7;
+  background-color: #e7a04f;
   color: white;
   border: none;
   padding: 10px 0;
@@ -48,10 +48,9 @@ input[type="number"] {
   font-size: 10px; /* 글씨 크기 */
   border: 1px solid #0077cc;
   border-radius: 6px;
-  background-color: rgba(0, 0, 139, 0.2);
+  background-color: lightgray;
   box-sizing: border-box; /* 패딩 포함해서 크기 계산 */
   margin-bottom: 10px; /* 아래 간격 조절 */
-  color: white;
 }
 /* 로그인 버튼 */
 .login-btn {
@@ -86,7 +85,7 @@ input[type="number"] {
 
 /* 기본: 비활성화 상태 */
 button:disabled {
-  background-color: #ccc; /* 회색 */
+  background-color: darkgray; /* 회색 */
   color: #666;
   cursor: not-allowed;
   border: none;
