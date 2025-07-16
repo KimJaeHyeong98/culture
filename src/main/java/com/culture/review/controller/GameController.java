@@ -14,6 +14,11 @@ import com.culture.review.service.GameService;
 import com.culture.review.vo.GameVO;
 import com.culture.review.vo.ReviewVO;
 
+import jakarta.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+
 @Controller
 public class GameController {
 
@@ -21,8 +26,8 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping("/gamelist")
-    public String showGameList(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
-        int pageSize = 9;
+    public String showGameList(@RequestParam(name = "page", defaultValue = "1") int page, Model model,HttpSession session) {
+    int pageSize = 9;
 
         List<GameVO> games = gameService.getGameListByPage(page, pageSize);
         int totalCount = gameService.getTotalGameCount();
@@ -39,9 +44,17 @@ public class GameController {
         model.addAttribute("currentPage", page);
         // model.addAttribute("reviewsMap", reviewsMap);
         model.addAttribute("totalPage", totalPage);
-        model.addAttribute("content", "account/acountMain.jsp");
         System.out.println(totalPage);
 
-        return "gamelist"; // JSP 페이지명
+        // 로그인 여부에 따라 포함할 JSP 결정
+        if (session.getAttribute("loginUser") != null) {
+            model.addAttribute("content", "account/good.jsp"); // 로그인한 사용자용
+        } else {
+            model.addAttribute("content", "account/acountMain.jsp"); // 비로그인 사용자용
+        }
+
+    
+       return"gamelist"; // JSP 페이지명
     }
+
 }

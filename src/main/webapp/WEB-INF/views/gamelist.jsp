@@ -106,16 +106,17 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <c:forEach var="review" items="${game.reviews}">
               <div class="review-item">
                 <div class="review-header">
-                  <span class="review-id">ID ksy&nbsp;&nbsp;
+                  <div class="review-left">
+                    <span class="review-id">닉네임 : ${loginUser.u_user_name}</span>
                     <span class="review-stars">⭐⭐⭐⭐⭐</span>
-                  </span>
-                  <p class="review-text" id="text-${review.r_review_id}">${review.r_content}</p>
-                  <textarea class="edit-text" id="edit-${review.r_review_id}" style="display:none;">${review.r_content}</textarea>
-                  <span class="review-icon" onclick="editReview('101')">✏️</span>
-                  <span class="save-icon" id="save-101" style="display:none;" onclick="saveReview('101')">💾</span>
+                  </div>
+                  <div class="review-right">
+                    <span class="review-icon" onclick="editReview('${review.r_review_id}')">✏️</span>
+                    <span class="save-icon" id="save-${review.r_review_id}" style="display:none;" onclick="saveReview('${review.r_review_id}')">💾</span>
+                  </div>
                 </div>
-                <!-- <p class="review-text" id="text-101">개노잼-_-;;</p>
-                <textarea class="edit-text" id="edit-101" style="display:none;">개노잼-_-;;</textarea> -->
+                <p class="review-text" id="text-${review.r_review_id}">${review.r_content}</p>
+                <textarea class="edit-text" id="edit-${review.r_review_id}" style="display:none;">${review.r_content}</textarea>
                 <div class="review-footer">
                   <span class="review-date">2025-07-09</span>
                 </div>

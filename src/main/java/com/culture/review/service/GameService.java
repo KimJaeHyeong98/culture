@@ -37,4 +37,13 @@ public class GameService {
             return gameMapper.selectReviewsByGameId(gameId);
         
     }
+    
+     // 등록
+    //  public void addReview(ReviewVO reviewVO) {
+    //      if (reviewMapper.insertReview(reviewVO) == 1) {
+    //          System.out.println("add review success");
+    //      }
+
+    //  }
+
 }

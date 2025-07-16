@@ -1,14 +1,22 @@
-<% if (session.getAttribute("loginUser") == null) {
-response.sendRedirect("login"); return; } %> <%@ page language="java"
-contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
-prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<% 
+  if (session.getAttribute("loginUser") == null) {
+    response.sendRedirect("login");
+    return; 
+  } 
+%>
+
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="resources/css/account.css" rel="stylesheet" />
+    <link href="${ctx}/resources/css/account.css" rel="stylesheet" />
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
@@ -22,13 +30,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
           <button class="register-btn" onclick="register()">신작 등록</button>
         </div>
       </c:if>
-      <!-- 숨겨진 POST 전송용 form -->
-      <form
-        id="registerForm"
-        action="${pageContext.request.contextPath}/account/register"
-        method="post"
-        style="display: none"
-      ></form>
 
       <div class="btn-group">
         <button onclick="logout()" class="logout-btn">로그아웃</button>
@@ -41,11 +42,12 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     function logout() {
       let ok = confirm("로그아웃 하시겠습니까?");
       if (ok) {
-        location.href = "logoutdo";
+        location.href = "${ctx}/logoutdo";
       }
     }
+
     function register() {
-      document.getElementById("registerForm").submit();
+      location.href = "${ctx}/register/register";
     }
   </script>
 </html>
