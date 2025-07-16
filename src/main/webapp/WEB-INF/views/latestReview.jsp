@@ -5,7 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>browse game | CCC</title>
+    <title>browse latest review | CCC</title>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
@@ -40,7 +40,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-            <li><a href="/latestreview">유저 리뷰</a></li>
+            <li><a href="/latestReview">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
