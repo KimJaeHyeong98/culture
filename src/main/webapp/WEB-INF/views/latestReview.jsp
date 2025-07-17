@@ -61,7 +61,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <h2 style="text-align: center">최신 리뷰</h2>
         <!-- 🔍 검색 폼 -->
         <div class="review-search-box">
-          <form
+          <!-- <form
             action="/searchReview"
             method="get"
             style="display: flex; justify-content: center; gap: 5px"
@@ -73,7 +73,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               style="height: 30px; width: 300px; font-size: 12px"
             />
             <button type="submit" style="height: 30px">검색</button>
-          </form>
+          </form> -->
+          <div>최근 1개월간 리뷰가 최신순으로 나타납니다</div>
         </div>
 
         <div class="add-review">
