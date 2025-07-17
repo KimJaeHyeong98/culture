@@ -20,7 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
               ? "movie-list"
               : type === "GAME"
               ? "game-list"
-              : "anime-list";
+              : type === "ANIME"
+              ? "anime-list"
+              : null;
+
+          if (!listId) {
+            console.error("❗listId를 찾을 수 없습니다. type:", type);
+            return;
+          }
 
           const list = document.getElementById(listId);
           list.innerHTML = ""; // 기존 목록 초기화
@@ -38,16 +45,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
           data.forEach((item) => {
             const li = document.createElement("li");
+
+            let title = "";
+            let director = "";
+            let releaseDate = "";
+            let id = "";
+
+            if (type === "MOVIE") {
+              title = item.m_title;
+              director = item.m_director;
+              releaseDate = item.m_release_date;
+              id = item.m_movie_id;
+            } else if (type === "ANIME") {
+              title = item.an_title;
+              director = item.an_director;
+              releaseDate = item.an_release_date;
+              id = item.an_anime_id;
+            } else if (type === "GAME") {
+              title = item.g_title;
+              director = item.g_director;
+              releaseDate = item.g_release_date;
+              id = item.g_game_id;
+            }
+
             li.innerHTML = `
-              <strong>제목:</strong> ${item.m_title}<br>
-              <strong>감독:</strong> ${item.m_director}<br>
-              <strong>개봉일:</strong> ${item.m_release_date}
+              <strong>제목:</strong> ${title}<br>
+              <strong>감독:</strong> ${director}<br>
+              <strong>개봉일:</strong> ${releaseDate}
             `;
+
             li.style.cursor = "pointer";
 
-            // 🎯 클릭 시 모달 열기 (4단계 핵심!)
             li.addEventListener("click", () => {
-              openCategoryModal(item.m_movie_id);
+              openCategoryModal(type, id, li); // 👈 type도 전달!
             });
 
             list.appendChild(li);
@@ -58,15 +88,96 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 모달 열기
-function openCategoryModal(movieId) {
-  document.getElementById("selectedMovieId").value = movieId;
+let currentLi = null; // 전역에 추가
+
+function openCategoryModal(type, id, liElement) {
+  if (type === "MOVIE") {
+    document.getElementById("selectedMovieId").value = id;
+  } else if (type === "ANIME") {
+    document.getElementById("selectedAnimeId").value = id;
+  }
+
+  currentLi = liElement; // 현재 클릭한 li 저장
   document.getElementById("categoryModal").classList.remove("hidden");
 }
 
 // 모달 닫기
 function closeModal() {
   document.getElementById("categoryModal").classList.add("hidden");
+}
+
+function reloadCategorylessList(type) {
+  let url = "";
+
+  if (type === "MOVIE") url = "/categoryless-movies";
+  else if (type === "GAME") url = "/categoryless-games";
+  else if (type === "ANIME") url = "/categoryless-animes";
+
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      const listId =
+        type === "MOVIE"
+          ? "movie-list"
+          : type === "GAME"
+          ? "game-list"
+          : type === "ANIME"
+          ? "anime-list"
+          : null;
+
+      const list = document.getElementById(listId);
+      list.innerHTML = "";
+
+      if (data.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "카테고리 없는 항목이 없습니다.";
+        li.style.color = "#888";
+        li.style.textAlign = "center";
+        li.style.padding = "10px";
+        list.appendChild(li);
+        return;
+      }
+
+      data.forEach((item) => {
+        const li = document.createElement("li");
+
+        let title = "";
+        let director = "";
+        let releaseDate = "";
+        let id = "";
+
+        if (type === "MOVIE") {
+          title = item.m_title;
+          director = item.m_director;
+          releaseDate = item.m_release_date;
+          id = item.m_movie_id;
+        } else if (type === "ANIME") {
+          title = item.an_title;
+          director = item.an_director;
+          releaseDate = item.an_release_date;
+          id = item.an_anime_id;
+        } else if (type === "GAME") {
+          title = item.g_title;
+          director = item.g_director;
+          releaseDate = item.g_release_date;
+          id = item.g_game_id;
+
+          li.innerHTML = `
+          <strong>제목:</strong> ${title}<br>
+          <strong>감독:</strong> ${director}<br>
+          <strong>개봉일:</strong> ${releaseDate}
+        `;
+
+          li.style.cursor = "pointer";
+
+          li.addEventListener("click", () => {
+            openCategoryModal(type, id);
+          });
+
+          list.appendChild(li);
+        }
+      });
+    });
 }
 
 function addCategorySelect() {
@@ -116,31 +227,43 @@ document
     e.preventDefault();
 
     const movieId = document.getElementById("selectedMovieId").value;
+    const animeId = document.getElementById("selectedAnimeId").value;
+    const gameId = document.getElementById("selectedGameId").value;
+
+    const contentId = movieId || animeId || gameId;
     const selects = document.querySelectorAll(".category-select");
 
     const categoryIds = Array.from(selects)
       .map((select) => select.value)
-      .filter((val) => val); // 빈 값 제외
+      .filter((val) => val);
 
-    if (!movieId || categoryIds.length === 0) {
+    const payload = {
+      categoryIds: categoryIds,
+    };
+
+    if (movieId) payload.movieId = movieId;
+    else if (animeId) payload.animeId = animeId;
+    else if (gameId) payload.gameId = gameId;
+
+    if (!contentId || categoryIds.length === 0) {
       alert("카테고리를 하나 이상 선택해주세요.");
       return;
     }
 
     fetch("/register/assign-categories", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        movieId: movieId,
-        categoryIds: categoryIds,
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     })
       .then((res) => res.text())
       .then((msg) => {
-        alert("카테고리 등록 완료"); // ex) "카테고리 등록 완료!"
-        closeModal(); // 모달 닫기
+        alert("카테고리 등록 완료");
+        closeModal();
+
+        if (currentLi) {
+          currentLi.remove();
+          currentLi = null;
+        }
       })
       .catch((err) => console.error("카테고리 등록 실패:", err));
   });
