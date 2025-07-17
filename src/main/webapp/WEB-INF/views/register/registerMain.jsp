@@ -44,12 +44,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="box">
           <strong>메뉴</strong><br />
           <ul>
-           <li><a href="/home">홈</a></li>
+            <li><a href="/home">홈</a></li>
             <li><a href="/gamelist">게임</a></li>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-          <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>

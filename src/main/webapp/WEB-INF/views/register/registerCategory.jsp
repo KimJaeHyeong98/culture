@@ -103,8 +103,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="categoryModal" class="modal hidden">
   <div class="modal-content">
     <h3>카테고리 선택</h3>
-    <form id="categoryForm">
+    <!-- <form id="categoryForm">
+      <input type="hidden" id="selectedMovieId" name="movieId" /> -->
+      <form id="categoryForm">
       <input type="hidden" id="selectedMovieId" name="movieId" />
+      <input type="hidden" id="selectedAnimeId" />
+      <input type="hidden" id="selectedGameId" />
 
       <div id="categorySelectContainer">
         <select name="categoryIds" class="category-select" required>
