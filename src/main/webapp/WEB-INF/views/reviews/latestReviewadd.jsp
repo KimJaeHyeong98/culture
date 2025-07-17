@@ -11,88 +11,13 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
 
     <link href="/resources/css/account.css" rel="stylesheet" />
     <link href="/resources/css/sample.css" rel="stylesheet" />
-
+    <link href="resources/css/latestreviewadd.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .review-main {
-        border: 1px solid #0077cc;
-        background-color: rgba(0, 0, 139, 0.1);
-        height: 725px;
-        width: 1000px;
-        margin: 0 auto;
-        padding: 30px;
-      }
-
-      .search-section {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-      }
-
-      .search-form {
-        display: flex;
-        gap: 8px;
-      }
-
-      .search-form input {
-        width: 180px;
-        padding: 8px;
-        border: 1px solid #0077cc;
-        border-radius: 4px;
-        font-size: 14px;
-      }
-
-      .search-form button {
-        padding: 8px 12px;
-        background-color: #0077cc;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .result-list {
-        background-color: white;
-        border: 1px solid #ccc;
-        height: 500px;
-        overflow-y: auto;
-        padding: 15px;
-        border-radius: 8px;
-        font-family: "Bitcount Grid Double", sans-serif;
-      }
-
-      .result-item {
-        border-bottom: 1px solid #ddd;
-        padding: 10px 0;
-      }
-
-      .result-item:last-child {
-        border-bottom: none;
-      }
-
-      .result-item .title {
-        font-weight: bold;
-        font-size: 16px;
-        color: #0077cc;
-      }
-
-      .result-item .meta {
-        margin-left: 10px;
-        font-size: 13px;
-        color: #777;
-      }
-
-      .result-item .desc {
-        margin-top: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -135,27 +60,70 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
         </div>
       </div>
       <div class="review-main">
+        <h2 style="text-align: center">리뷰 작성</h2>
         <div class="search-section">
           <!-- 영화 검색 -->
-          <form class="search-form" onsubmit="return false;">
-            <input type="text" id="movieInput" placeholder="영화 검색" />
-            <button type="button" class="search-btn" data-type="movie">
+          <form
+            class="search-form"
+            onsubmit="return false;"
+            style="display: flex; justify-content: center; gap: 5px"
+          >
+            <input
+              type="text"
+              id="movieInput"
+              placeholder="영화 검색"
+              style="height: 30px; width: 200px; font-size: 12px"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              data-type="movie"
+              style="height: 30px; font-size: 12px"
+            >
               영화 검색
             </button>
           </form>
 
           <!-- 애니메이션 검색 -->
-          <form class="search-form" onsubmit="return false;">
-            <input type="text" id="animeInput" placeholder="애니메이션 검색" />
-            <button type="button" class="search-btn" data-type="anime">
+          <form
+            class="search-form"
+            onsubmit="return false;"
+            style="display: flex; justify-content: center; gap: 5px"
+          >
+            <input
+              type="text"
+              id="animeInput"
+              placeholder="애니메이션 검색"
+              style="height: 30px; width: 200px; font-size: 12px"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              data-type="anime"
+              style="height: 30px; font-size: 12px"
+            >
               애니 검색
             </button>
           </form>
 
           <!-- 게임 검색 -->
-          <form class="search-form" onsubmit="return false;">
-            <input type="text" id="gameInput" placeholder="게임 검색" />
-            <button type="button" class="search-btn" data-type="game">
+          <form
+            class="search-form"
+            onsubmit="return false;"
+            style="display: flex; justify-content: center; gap: 5px"
+          >
+            <input
+              type="text"
+              id="gameInput"
+              placeholder="게임 검색"
+              style="height: 30px; width: 200px; font-size: 12px"
+            />
+            <button
+              type="button"
+              class="search-btn"
+              data-type="game"
+              style="height: 30px; font-size: 12px"
+            >
               게임 검색
             </button>
           </form>
@@ -166,7 +134,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
           <c:forEach var="item" items="${searchResults}">
             <div class="result-item">
               <strong class="title">${item.title}</strong>
-              <span class="meta">by ${item.creator}</span>
+              <span class="meta">${item.creator}</span>
               <p class="desc">${item.description}</p>
             </div>
           </c:forEach>

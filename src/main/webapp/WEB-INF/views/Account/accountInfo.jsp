@@ -60,7 +60,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
         </div>
       </div>
       <div class="info-main">
-        <h3 style="text-align: center; color: white">회원 정보</h3>
+        <h2 style="text-align: center; color: white">회원 정보</h2>
         <div class="user-info-list" id="infoArea">
           <div class="label">아이디:</div>
           <div class="value" id="id">${userInfo.u_user_id}</div>
