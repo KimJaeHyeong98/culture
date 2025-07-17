@@ -20,7 +20,7 @@ public class SampleC {
 
         if (session.getAttribute("loginUser") != null) {
             return "redirect:/goodpage"; // 이미 로그인된 경우 다른 페이지로 이동
-        }   
+        }
 
         model.addAttribute("content", "account/acountMain.jsp");
         return "sample";
@@ -28,8 +28,8 @@ public class SampleC {
 
     // @GetMapping("/latestReview")
     // public String cccLatestReview(Model model) {
-    //     model.addAttribute("content", "account/acountMain.jsp");
-    //     return "latestReview";
+    // model.addAttribute("content", "account/acountMain.jsp");
+    // return "latestReview";
     // }
 
     // @GetMapping("/gamelist")
