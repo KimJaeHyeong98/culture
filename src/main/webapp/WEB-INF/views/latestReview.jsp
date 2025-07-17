@@ -159,7 +159,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
 
         <div class="add-review">
-          <form action="">
+          <form action="add-review">
             <button>리뷰 작성하기</button>
           </form>
         </div>
@@ -188,5 +188,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
     </div>
+     <c:if test="${nologin}">
+      <script>
+        alert("로그인 한 유저만 리뷰쓰기가 가능합니다");
+      </script>
+    </c:if>
   </body>
 </html>
