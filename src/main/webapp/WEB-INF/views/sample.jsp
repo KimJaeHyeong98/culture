@@ -15,6 +15,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
@@ -59,7 +63,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       <div class="main">
         <div class="recommendation">
-          <div class="best-title" id="title"></div>
+          <div class="best-title" id="title">
+            <div class="best-name" id="tname">　</div>
+          </div>
           <div class="pagination">
             <div id="tbtn1" onclick="toggleImg1()"></div>
             <div id="tbtn2" onclick="toggleImg2()"></div>
