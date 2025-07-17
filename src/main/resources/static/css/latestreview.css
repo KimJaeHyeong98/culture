@@ -1,3 +1,4 @@
+/* 
 .main {
   display: flex;
   justify-content: center;
@@ -106,4 +107,110 @@
   font-size: 12px;
   text-align: right;
   color: #ccc;
+} */
+
+.review-list::-webkit-scrollbar {
+  width: 10px; /* 세로축 스크롤바 폭 너비 */
+}
+/* 스크롤바 막대 */
+.review-list::-webkit-scrollbar-thumb {
+  background: darkblue; /* 스크롤바 막대 색상 */
+  border: 2px solid blue; /* 스크롤바 막대 테두리 설정  */
+  border-radius: 12px 12px 12px 12px;
+}
+/* 스크롤이 움직이는 뒷 배경 */
+.review-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 139, 0.6); /* 스크롤바 뒷 배경 색상 */
+  border-radius: 12px 12px 12px 12px;
+}
+
+.review-main {
+  border: 1px solid #0077cc;
+  background-color: rgba(0, 0, 139, 0.2);
+  height: 725px;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.review-search-box {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.review-search-box input {
+  width: 300px;
+  padding: 8px;
+  font-size: 12px;
+  border: 1px solid #0077cc;
+  border-radius: 5px;
+}
+
+.review-search-box button {
+  padding: 8px 12px;
+  font-size: 12px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: calc((130px + 15px) * 4); /* 130px 높이 + gap 15px * 4 */
+  overflow-y: auto; /* 수직 스크롤 표시 */
+  padding-right: 10px; /* 스크롤바 안 가리게 여유 */
+}
+
+.review-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  border-radius: 8px;
+  font-family: "Bitcount Grid Double", sans-serif;
+}
+
+.review-type {
+  font-weight: bold;
+  color: #0077cc;
+}
+
+.review-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 5px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.review-author {
+  margin-left: 10px;
+  color: gray;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.review-content {
+  display: block;
+  margin: 10px 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.review-date {
+  font-size: 14px;
+  color: gray;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.review-recommend {
+  float: right;
+  font-size: 14px;
+  font-weight: bold;
+}
+.add-review {
+  text-align: right; /* 오른쪽 정렬 */
+  margin-top: 10px; /* h3 아래 간격 */
+  margin-bottom: 5px;
 }

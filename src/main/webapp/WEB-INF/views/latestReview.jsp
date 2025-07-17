@@ -9,100 +9,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <link rel="icon" href="https://i.imgur.com/CpTWrKm.png" />
 
     <link href="resources/css/sample.css" rel="stylesheet" />
-    <!-- <link href="resources/css/latestreview.css" rel="stylesheet" /> -->
+    <link href="resources/css/latestreview.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .review-main {
-        border: 1px solid #0077cc;
-        background-color: rgba(0, 0, 139, 0.1);
-        height: 725px;
-        width: 1000px;
-        margin: 0 auto;
-        padding: 30px;
-      }
-
-      .review-search-box {
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      .review-search-box input {
-        width: 300px;
-        padding: 8px;
-        font-size: 16px;
-        border: 1px solid #0077cc;
-        border-radius: 5px;
-      }
-
-      .review-search-box button {
-        padding: 8px 12px;
-        font-size: 16px;
-        background-color: #0077cc;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .review-list {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-height: calc((130px + 15px) * 4); /* 130px 높이 + gap 15px * 4 */
-        overflow-y: auto; /* 수직 스크롤 표시 */
-        padding-right: 10px; /* 스크롤바 안 가리게 여유 */
-      }
-
-      .review-item {
-        background-color: #f8f8ff;
-        border: 1px solid #0077cc;
-        padding: 8px;
-        border-radius: 8px;
-        font-family: "Bitcount Grid Double", sans-serif;
-      }
-
-      .review-type {
-        font-weight: bold;
-        color: #0077cc;
-      }
-
-      .review-title {
-        font-weight: bold;
-        font-size: 18px;
-        margin-left: 5px;
-      }
-
-      .review-author {
-        margin-left: 10px;
-        color: gray;
-      }
-
-      .review-content {
-        display: block;
-        margin: 10px 0;
-      }
-
-      .review-date {
-        font-size: 12px;
-        color: #555;
-      }
-
-      .review-recommend {
-        float: right;
-        font-size: 14px;
-        font-weight: bold;
-      }
-      .add-review {
-        text-align: right; /* 오른쪽 정렬 */
-        margin-top: 10px; /* h3 아래 간격 */
-        margin-bottom: 5px;
-      }
-    </style>
   </head>
   <body>
     <header>
@@ -145,22 +58,27 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
       <div class="review-main">
-        <h3 style="text-align: center">최근 한달 전체 리뷰</h3>
+        <h2 style="text-align: center">최신 리뷰</h2>
         <!-- 🔍 검색 폼 -->
         <div class="review-search-box">
-          <form action="/searchReview" method="get">
+          <form
+            action="/searchReview"
+            method="get"
+            style="display: flex; justify-content: center; gap: 5px"
+          >
             <input
               type="text"
               name="keyword"
               placeholder="작품명 또는 작성자 이름"
+              style="height: 30px; width: 300px; font-size: 12px"
             />
-            <button type="submit">검색</button>
+            <button type="submit" style="height: 30px">검색</button>
           </form>
         </div>
 
         <div class="add-review">
           <form action="">
-            <button>리뷰 작성하기</button>
+            <button style="border: 0; border-radius: 5px">리뷰 작성하기</button>
           </form>
         </div>
 
@@ -169,7 +87,26 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <c:forEach var="review" items="${reviews}">
             <div class="review-item">
               <!-- 콘텐츠 유형 -->
-              <span class="review-type">${review.contentType}</span>
+              <c:choose>
+                <c:when test="${review.contentType == 'GAME'}">
+                  <span class="review-type" style="color: blue"
+                    >${review.contentType}</span
+                  >
+                </c:when>
+                <c:when test="${review.contentType == 'ANIME'}">
+                  <span class="review-type" style="color: red"
+                    >${review.contentType}</span
+                  >
+                </c:when>
+                <c:when test="${review.contentType == 'MOVIE'}">
+                  <span class="review-type" style="color: yellow"
+                    >${review.contentType}</span
+                  >
+                </c:when>
+                <c:otherwise>
+                  <span class="review-type">${review.contentType}</span>
+                </c:otherwise>
+              </c:choose>
               <!-- 콘텐츠 제목 -->
               <span class="review-title"> ${review.contentTitle}</span><br />
               <!-- 리뷰 본문 -->
@@ -179,13 +116,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <!-- 추천 여부 -->
               <span class="review-recommend">
                 <c:choose>
-                  <c:when test="${review.recommendYn == 'Y'}">👍 추천함</c:when>
+                  <c:when test="${review.recommendYn == 'Y'}">👍 추천</c:when>
                   <c:otherwise>👎 비추천</c:otherwise>
                 </c:choose>
               </span>
             </div>
           </c:forEach>
         </div>
+        <div style="height: 80px"></div>
       </div>
     </div>
   </body>
