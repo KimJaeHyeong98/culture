@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 @Service
 @Transactional
 public class RegisterService {
@@ -28,10 +26,17 @@ public class RegisterService {
         }
     }
 
+<<<<<<< HEAD
      public void addGame(GameVO gameVO) {
        if (registerMapper.insertGame(gameVO) == 1) {
         System.out.println("add game success");
         } 
+=======
+    public void addGame(GameVO gameVO) {
+        if (registerMapper.insertGame(gameVO) == 1) {
+            System.out.println("add game success");
+        }
+>>>>>>> 5198824bf34068623b28ceb5ace55e453c4cb13f
     }
 
     public List<MovieVO> getMoviesWithoutCategory() {

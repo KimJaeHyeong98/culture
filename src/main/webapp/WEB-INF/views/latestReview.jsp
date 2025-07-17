@@ -53,12 +53,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         display: flex;
         flex-direction: column;
         gap: 15px;
+        max-height: calc((130px + 15px) * 4); /* 130px 높이 + gap 15px * 4 */
+        overflow-y: auto; /* 수직 스크롤 표시 */
+        padding-right: 10px; /* 스크롤바 안 가리게 여유 */
       }
 
       .review-item {
         background-color: #f8f8ff;
         border: 1px solid #0077cc;
-        padding: 15px;
+        padding: 8px;
         border-radius: 8px;
         font-family: "Bitcount Grid Double", sans-serif;
       }
@@ -94,6 +97,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         font-size: 14px;
         font-weight: bold;
       }
+      .add-review {
+        text-align: right; /* 오른쪽 정렬 */
+        margin-top: 10px; /* h3 아래 간격 */
+        margin-bottom: 5px;
+      }
     </style>
   </head>
   <body>
@@ -126,7 +134,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-          <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
@@ -137,6 +145,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
       <div class="review-main">
+        <h3 style="text-align: center">최근 한달 전체 리뷰</h3>
         <!-- 🔍 검색 폼 -->
         <div class="review-search-box">
           <form action="/searchReview" method="get">
@@ -149,30 +158,40 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </form>
         </div>
 
-        <!-- 📋 리뷰 리스트 -->
-       <div class="review-list">
-  <c:forEach var="review" items="${reviews}">
-    <div class="review-item">
-      <!-- 콘텐츠 유형 -->
-      <span class="review-type">[${review.rContentType}]</span>
-      <!-- 콘텐츠 제목 -->
-      <span class="review-title">${review.contentTitle}</span><br/>
-      <!-- 리뷰 본문 -->
-      <span class="review-content">${review.rContent}</span><br/>
-      <!-- 작성일 -->
-      <span class="review-date">${review.reviewDate}</span>
-      <!-- 추천 여부 -->
-      <span class="review-recommend">
-        <c:choose>
-          <c:when test="${review.rRecommendYn == 'Y'}">👍 추천함</c:when>
-          <c:otherwise>👎 비추천</c:otherwise>
-        </c:choose>
-      </span>
-    </div>
-  </c:forEach>
-</div>
+        <div class="add-review">
+          <form action="add-review">
+            <button>리뷰 작성하기</button>
+          </form>
+        </div>
 
+        <!-- 📋 리뷰 리스트 -->
+        <div class="review-list">
+          <c:forEach var="review" items="${reviews}">
+            <div class="review-item">
+              <!-- 콘텐츠 유형 -->
+              <span class="review-type">${review.contentType}</span>
+              <!-- 콘텐츠 제목 -->
+              <span class="review-title"> ${review.contentTitle}</span><br />
+              <!-- 리뷰 본문 -->
+              <span class="review-content">${review.content}</span><br />
+              <!-- 작성일 -->
+              <span class="review-date"> ${review.reviewDate}</span>
+              <!-- 추천 여부 -->
+              <span class="review-recommend">
+                <c:choose>
+                  <c:when test="${review.recommendYn == 'Y'}">👍 추천함</c:when>
+                  <c:otherwise>👎 비추천</c:otherwise>
+                </c:choose>
+              </span>
+            </div>
+          </c:forEach>
+        </div>
       </div>
     </div>
+     <c:if test="${nologin}">
+      <script>
+        alert("로그인 한 유저만 리뷰쓰기가 가능합니다");
+      </script>
+    </c:if>
   </body>
 </html>
