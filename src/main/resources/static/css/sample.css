@@ -115,6 +115,19 @@ a:active {
     opacity: 1;
   }
 }
+.best-title:hover {
+  cursor: pointer;
+}
+.best-name {
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 200px;
+  font-family: "Do Hyeon", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30pt;
+  text-shadow: 0px 0px 10px blue;
+}
 .pagination {
   position: absolute;
   bottom: 10px;
