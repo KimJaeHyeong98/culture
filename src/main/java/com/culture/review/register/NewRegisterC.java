@@ -3,6 +3,7 @@ package com.culture.review.register;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -190,11 +191,37 @@ public class NewRegisterC {
         return registerService.getMoviesWithoutCategory();
     }
 
-    @PostMapping("/register/assign-categories")
+    @GetMapping("/categoryless-animes")
     @ResponseBody
-    public String assignCategories(@RequestBody MovieCategoryVO movieCategoryVO) {
-        registerService.assignCategories(movieCategoryVO.getMovieId(), movieCategoryVO.getCategoryIds());
-        return "register/registerCategory";
+    public List<AnimeVO> getCategorylessAnimes() {
+        return registerService.getAnimesWithoutCategory();
     }
 
+    @GetMapping("/categoryless-games")
+    @ResponseBody
+    public List<GameVO> getCategorylessGames() {
+        return registerService.getGamesWithoutCategory();
+    }
+
+    @PostMapping("/register/assign-categories")
+    @ResponseBody
+    public String assignCategories(@RequestBody Map<String, Object> payload) {
+        List<?> categoryIdObjects = (List<?>) payload.get("categoryIds");
+        List<Integer> categoryIds = categoryIdObjects.stream()
+            .map(id -> Integer.parseInt(id.toString()))
+            .toList();
+
+        if (payload.containsKey("movieId")) {
+            int movieId = Integer.parseInt(payload.get("movieId").toString());
+            registerService.assignMovieCategories(movieId, categoryIds);
+        } else if (payload.containsKey("animeId")) {
+            int animeId = Integer.parseInt(payload.get("animeId").toString());
+            registerService.assignAnimeCategories(animeId, categoryIds);
+        } else if (payload.containsKey("gameId")) { 
+            int gameId = Integer.parseInt(payload.get("gameId").toString());
+            registerService.assignGameCategories(gameId, categoryIds);
+        }
+
+        return "ok";
+    }
 }
