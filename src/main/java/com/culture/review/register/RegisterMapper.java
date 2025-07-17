@@ -68,9 +68,6 @@ public interface RegisterMapper {
             ")")
     List<MovieVO> getMoviesWithoutCategory();
 
-
-
     @Insert("INSERT INTO m_movie_category (m_movie_id, c_category_id) VALUES (#{movieId}, #{categoryId})")
-void insertMovieCategory(@Param("movieId") int movieId, @Param("categoryId") int categoryId);
-
+    void insertMovieCategory(@Param("movieId") int movieId, @Param("categoryId") int categoryId);
 }
