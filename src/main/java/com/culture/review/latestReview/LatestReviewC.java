@@ -13,6 +13,7 @@ public class LatestReviewC {
     @Autowired
     private LatestReviewService latestReviewService;
 
+    //전체 리뷰 조회
     @GetMapping("/latestReview-all")
     public String reviewAll(HttpSession session, Model model) {
 
