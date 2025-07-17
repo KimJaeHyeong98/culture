@@ -13,6 +13,7 @@ public class LatestReviewService {
     @Autowired
     private LatestReviewMapper latestReviewMapper;
 
+    //전체 리뷰 조회
      public List<LatestReviewVO> getAllReview() {
         List<LatestReviewVO> reviews = latestReviewMapper.selectAllReview();
         System.out.println(reviews);
