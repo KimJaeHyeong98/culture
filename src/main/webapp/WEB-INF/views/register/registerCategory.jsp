@@ -49,7 +49,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-          <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
@@ -61,6 +61,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
       
       <div class="register-main">
+        <div class="register-form">
   <!-- 영화 -->
   <div class="content-box">
     <h3>영화</h3>
@@ -90,12 +91,13 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 
-    <div class="content-box">
+  <div class="content-box">
     <h3>영화</h3>
     <ul id="game-list">
       <!-- 게임 항목들이 여기에 비동기로 추가됨 -->
     </ul>
     <button class="load-button" data-type="GAME">출연진 없는 영화 불러오기</button>
+  </div>
   </div>
 </div>
 
