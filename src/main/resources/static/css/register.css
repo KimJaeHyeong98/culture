@@ -2,8 +2,7 @@
   border: 1px solid #0077cc;
   background-color: rgba(0, 0, 139, 0.1);
   height: auto;
-  width: 1000px;
-  margin: 0 auto;
+  flex: 1;
   padding: 30px;
   box-sizing: border-box;
   border-radius: 0px;
