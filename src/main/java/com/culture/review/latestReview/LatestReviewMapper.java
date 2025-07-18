@@ -112,6 +112,7 @@ public interface LatestReviewMapper {
 
     @Select("""
                 SELECT
+                    a.an_anime_id AS id,
                     a.an_title AS title,
                     TO_CHAR(a.an_release_date, 'YYYY-MM-DD') AS releaseDate,
                     LISTAGG(c.c_category_name, ', ')
@@ -123,12 +124,13 @@ public interface LatestReviewMapper {
                 WHERE
                     LOWER(a.an_title) LIKE '%' || LOWER(#{keyword}) || '%'
                 GROUP BY
-                    a.an_title, a.an_release_date
+                    a.an_anime_id, a.an_title, a.an_release_date
             """)
     List<SearchResultVO> searchAnime(@Param("keyword") String keyword);
 
     @Select("""
                 SELECT
+                    g.g_game_id AS id, 
                     g.g_title AS title,
                     TO_CHAR(g.g_release_date, 'YYYY-MM-DD') AS releaseDate,
                     LISTAGG(c.c_category_name, ', ')
@@ -140,7 +142,7 @@ public interface LatestReviewMapper {
                 WHERE
                     LOWER(g.g_title) LIKE '%' || LOWER(#{keyword}) || '%'
                 GROUP BY
-                    g.g_title, g.g_release_date
+                    g.g_game_id, g.g_title, g.g_release_date
             """)
     List<SearchResultVO> searchGame(@Param("keyword") String keyword);
 

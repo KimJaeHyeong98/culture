@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         credentials: "include",
         body: JSON.stringify({
           contentId: contentId,
-          contentType: contentType,
+          contentType: contentType.toUpperCase(),
           reviewText: reviewText,
           reviewRating: reviewRating,
           reviewRecommend: reviewRecommend,

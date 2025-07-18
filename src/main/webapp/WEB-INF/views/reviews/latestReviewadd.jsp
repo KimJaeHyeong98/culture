@@ -201,7 +201,6 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
               step="0.1"
             />
           </div>
-
           <div>
             <label for="reviewRecommend">추천 여부:</label><br />
             <select id="reviewRecommend" name="reviewRecommend">

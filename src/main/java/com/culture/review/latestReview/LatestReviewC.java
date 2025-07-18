@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.culture.review.Account.AccountVO;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -73,25 +75,26 @@ public class LatestReviewC {
         return latestReviewService.searchByGame(keyword);
     }
 
-     @PostMapping("/submitReview")
-    public ResponseEntity<Map<String, Object>> submitReview(@RequestBody NewReviewVO newReviewVO, HttpSession session) {
+    @PostMapping("/submitReview")
+    public ResponseEntity<Map<String, Object>> submitReview(@RequestBody NewReviewVO newReviewVO, HttpSession session,
+            AccountVO accountVO) {
         Map<String, Object> result = new HashMap<>();
 
         // 세션에서 로그인 사용자 ID 가져오기
-        Integer userPk = (Integer) session.getAttribute("u_user_pk");
-        if (userPk == null) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+        if (loginUser == null) {
             result.put("success", false);
             result.put("message", "로그인이 필요합니다.");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(result);
         }
-
+        Integer userPk = loginUser.getU_user_pk();
         newReviewVO.setUserPk(userPk);
 
         try {
             latestReviewService.submitReviewAndRating(newReviewVO);
             result.put("success", true);
         } catch (Exception e) {
-             e.printStackTrace(); 
+            e.printStackTrace();
             result.put("success", false);
             result.put("message", e.getMessage());
         }
