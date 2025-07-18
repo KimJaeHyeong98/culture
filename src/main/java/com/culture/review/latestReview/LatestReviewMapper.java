@@ -130,7 +130,7 @@ public interface LatestReviewMapper {
 
     @Select("""
                 SELECT
-                    g.g_game_id AS id, 
+                    g.g_game_id AS id,
                     g.g_title AS title,
                     TO_CHAR(g.g_release_date, 'YYYY-MM-DD') AS releaseDate,
                     LISTAGG(c.c_category_name, ', ')
@@ -185,4 +185,6 @@ public interface LatestReviewMapper {
                 )
             """)
     void insertRating(NewReviewVO newReviewVO);
+
+
 }
