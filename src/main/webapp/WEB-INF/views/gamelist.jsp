@@ -48,7 +48,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-             <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
@@ -69,30 +69,32 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         >
           <!-- 게임 메인페이지 -->
           <div class="game-title">GAME</div>
-          <div class="game-wrap">
+          <div class="game-wrap" style="height: 655px;">
             <c:forEach var="game" items="${games}">
               <div class="game-review">
-                <img src="${game.g_poster_path}" alt="포스터" style="width: 150px;">
                 <div>
+                  <img src="${game.g_poster_path}" alt="포스터" style="width: 100%; height: 100%;">
+                </div>
+                <div style="font-size: 14px;">
                   <div hidden>${game.g_game_id}</div>
-                  <div class="rating" onclick="openModal('${game.g_game_id}')">평점 : ⭐⭐⭐⭐⭐</div>
-                  <div>제목 : ${game.g_title}</div>
-                  <div>출시일 : ${game.g_release_date}</div>
-                  <div>감독 : ${game.g_director}</div>
-                  <div>장르 : ${game.category_list}</div>
+                  <div class="rating" onclick="openModal('${game.g_game_id}')">⭐⭐⭐⭐⭐</div>
+                  <div style="width: 100%;">제목 : ${game.g_title}</div>
+                  <div style="width: 100%;">출시일 : ${game.g_release_date}</div>
+                  <div style="width: 100%;">제작 : ${game.g_director}</div>
+                  <div style="width: 100%;">장르 : ${game.category_list}</div>
                 </div>
               </div>
             </c:forEach>
           </div>
-            <div class="pagination">
-              <a href="/gamelist?page=1">«</a>
-                <c:forEach var="p" begin="1" end="${totalPage}">
-                  <a href="/gamelist?page=${p}" style="${p == currentPage ? 'font-weight:bold' : ''}">
-                    &nbsp;${p}&nbsp;
-                  </a>
-                </c:forEach>
-              <a href="/gamelist?page=${totalPage}">»</a>
-            </div>
+          <div class="pagination">
+            <a href="/gamelist?page=1">«</a>
+            <c:forEach var="p" begin="1" end="${totalPage}">
+              <a href="/gamelist?page=${p}" style="${p == currentPage ? 'font-weight:bold' : ''}">
+                &nbsp;${p}&nbsp;
+              </a>
+            </c:forEach>
+            <a href="/gamelist?page=${totalPage}">»</a>
+          </div>
         </div>
         <div style="height: 80px"></div>
       </div>
