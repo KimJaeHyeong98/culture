@@ -92,25 +92,23 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
     <div class="content-box">
     <h3>영화</h3>
-    <ul id="game-list">
-      <!-- 게임 항목들이 여기에 비동기로 추가됨 -->
+    <ul id="moviecast-list">
+      <!-- 영화 항목들이 여기에 비동기로 추가됨 -->
     </ul>
-    <button class="load-button" data-type="GAME">출연진 없는 영화 불러오기</button>
+    <button class="load-button" data-type="MOVIECAST">출연진 없는 영화 불러오기</button>
   </div>
 </div>
 
 <!-- 카테고리 선택 모달 -->
 <div id="categoryModal" class="modal hidden">
   <div class="modal-content">
-    <h3>카테고리 선택</h3>
-    <!-- <form id="categoryForm">
-      <input type="hidden" id="selectedMovieId" name="movieId" /> -->
       <form id="categoryForm">
       <input type="hidden" id="selectedMovieId" name="movieId" />
       <input type="hidden" id="selectedAnimeId" />
       <input type="hidden" id="selectedGameId" />
-
+      <input type="hidden" id="selectedMovieCastId" />
       <div id="categorySelectContainer">
+        <h3>카테고리 선택</h3>
         <select name="categoryIds" class="category-select" required>
           <option value="">-- 카테고리 선택 --</option>
           <option value="1">액션</option>
@@ -128,6 +126,16 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <option value="13">스포츠</option>
           <option value="14">음악</option>
           <option value="15">애니메이션</option>
+        </select>
+      </div>
+      <!-- 출연진 선택 -->
+      <div id="castCategoryWrapper" style="display: none;">
+        <h3>출연진 선택</h3>
+        <select id="castCategorySelect" name="castCategoryId" class="category-select">
+          <option value="">-- 출연진 선택 --</option>
+          <!-- <option value="101">주연</option>
+          <option value="102">조연</option>
+          <option value="103">특별출연</option> -->
         </select>
       </div>
 

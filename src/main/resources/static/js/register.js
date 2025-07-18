@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (type === "MOVIE") url = "/categoryless-movies";
       else if (type === "GAME") url = "/categoryless-games";
       else if (type === "ANIME") url = "/categoryless-animes";
+      else if (type === "MOVIECAST") url = "/castless-movies";
 
       fetch(url)
         .then((res) => res.json())
@@ -18,6 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const listId =
             type === "MOVIE"
               ? "movie-list"
+              : type === "MOVIECAST"
+              ? "moviecast-list"
               : type === "GAME"
               ? "game-list"
               : type === "ANIME"
@@ -66,8 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
               director = item.g_director;
               releaseDate = item.g_release_date;
               id = item.g_game_id;
+            } else if (type === "MOVIECAST") {
+              title = item.m_title;
+              director = item.m_director;
+              releaseDate = item.m_release_date;
+              id = item.m_movie_id;
             }
-
             li.innerHTML = `
               <strong>제목:</strong> ${title}<br>
               <strong>감독:</strong> ${director}<br>
@@ -91,13 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentLi = null; // 전역에 추가
 
 function openCategoryModal(type, id, liElement) {
+  // 모든 hidden input 초기화
+  document.getElementById("selectedMovieId").value = "";
+  document.getElementById("selectedAnimeId").value = "";
+  document.getElementById("selectedGameId").value = "";
+  document.getElementById("selectedMovieCastId").value = "";
+
+  // 출연진 전용 선택창 보여주거나 숨기기
+  const castCategoryWrapper = document.getElementById("castCategoryWrapper");
+  const categorySelectContainer = document.getElementById(
+    "categorySelectContainer"
+  );
+
   if (type === "MOVIE") {
     document.getElementById("selectedMovieId").value = id;
+    castCategoryWrapper.style.display = "none";
+    categorySelectContainer.style.display = "block";
   } else if (type === "ANIME") {
     document.getElementById("selectedAnimeId").value = id;
+    castCategoryWrapper.style.display = "none";
+    categorySelectContainer.style.display = "block";
+  } else if (type === "GAME") {
+    document.getElementById("selectedGameId").value = id;
+    castCategoryWrapper.style.display = "none";
+    categorySelectContainer.style.display = "block";
+  } else if (type === "MOVIECAST") {
+    document.getElementById("selectedMovieCastId").value = id;
+    castCategoryWrapper.style.display = "block";
+    categorySelectContainer.style.display = "none";
   }
 
-  currentLi = liElement; // 현재 클릭한 li 저장
+  currentLi = liElement;
   document.getElementById("categoryModal").classList.remove("hidden");
 }
 
@@ -221,6 +252,25 @@ function removeCategorySelect() {
   }
 }
 
+function loadCastCategories() {
+  const select = document.getElementById("castCategorySelect");
+  select.innerHTML = `<option value="">-- 출연진 선택 --</option>`; // 초기화
+
+  fetch("/cast-categories")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((category) => {
+        const option = document.createElement("option");
+        option.value = category.id;
+        option.textContent = category.name;
+        select.appendChild(option);
+      });
+    })
+    .catch((err) => {
+      console.error("출연진 카테고리 불러오기 실패:", err);
+    });
+}
+
 document
   .getElementById("categoryForm")
   .addEventListener("submit", function (e) {
@@ -229,8 +279,9 @@ document
     const movieId = document.getElementById("selectedMovieId").value;
     const animeId = document.getElementById("selectedAnimeId").value;
     const gameId = document.getElementById("selectedGameId").value;
+    const movieCastId = document.getElementById("selectedMovieCastId").value;
 
-    const contentId = movieId || animeId || gameId;
+    const contentId = movieId || animeId || gameId || movieCastId;
     const selects = document.querySelectorAll(".category-select");
 
     const categoryIds = Array.from(selects)
@@ -244,6 +295,7 @@ document
     if (movieId) payload.movieId = movieId;
     else if (animeId) payload.animeId = animeId;
     else if (gameId) payload.gameId = gameId;
+    else if (movieCastId) payload.movieCastId = movieCastId;
 
     if (!contentId || categoryIds.length === 0) {
       alert("카테고리를 하나 이상 선택해주세요.");

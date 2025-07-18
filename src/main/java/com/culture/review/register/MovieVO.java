@@ -13,5 +13,4 @@ public class MovieVO {
     private Date m_release_date;
     private String m_director;
     private String m_poster_path;
-    // private MultipartFile file;
 }
