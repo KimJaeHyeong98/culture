@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("리뷰가 등록되었습니다.");
             modal.style.display = "none"; // 모달 닫기
           } else {
-            alert("리뷰 등록에 실패했습니다.");
+            alert("한작품당 리뷰는 하나만 가능합니다.");
           }
         })
         .catch((err) => {
