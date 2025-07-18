@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // ✅ 결과가 없을 경우 메시지 출력
           if (data.length === 0) {
             const li = document.createElement("li");
-            li.textContent = "카테고리 없는 항목이 없습니다.";
+            li.textContent = "카테고리 없는 항목이 없음";
             li.style.color = "#888";
             li.style.textAlign = "center";
             li.style.padding = "10px";
@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             li.innerHTML = `
               <strong>제목:</strong> ${title}<br>
-              <strong>감독:</strong> ${director}<br>
-              <strong>개봉일:</strong> ${releaseDate}
+              <strong>제작:</strong> ${director}<br>
+              <strong>출시:</strong> ${releaseDate}
             `;
 
             li.style.cursor = "pointer";
