@@ -203,6 +203,14 @@ public class NewRegisterC {
         return registerService.getGamesWithoutCategory();
     }
 
+    // 출연진 없는 영화 불러오기
+    @GetMapping("/castless-movies")
+    @ResponseBody
+    public List<MovieVO> getMoviesWithoutCast() {
+        return registerService.getMoviesWithoutCast();
+    }
+
+
     @PostMapping("/register/assign-categories")
     @ResponseBody
     public String assignCategories(@RequestBody Map<String, Object> payload) {
@@ -224,4 +232,12 @@ public class NewRegisterC {
 
         return "ok";
     }
+
+    @GetMapping("/cast-categories")
+    @ResponseBody
+    public List<CastCategoryVO> getCastCategories() {
+        return registerService.getCastCategories();
+    }
+
+
 }

@@ -20,6 +20,14 @@ public class RegisterService {
 
     }
 
+    // 출연진 없는 영화 불러오기
+    public void addCast(MovieVO movieCastVO) {
+        if (registerMapper.insertRegister(movieCastVO) == 1) {
+            System.out.println("add cast success");
+        }
+
+    }
+
     public void addAnime(AnimeVO animeVO) {
         if (registerMapper.insertAnime(animeVO) == 1) {
             System.out.println("add anime success");
@@ -43,6 +51,22 @@ public class RegisterService {
             registerMapper.insertMovieCategory(movieId, categoryId);
         }
     }
+
+    // 출연진 없는 영화 불러오기
+    public List<MovieVO> getMoviesWithoutCast() {
+        List<MovieVO> movies = registerMapper.getMoviesWithoutCast();
+        System.out.println("출연진 없는 영화 수: " + movies.size());
+        return movies;
+    }
+
+    // 출연진 등록
+    public void assignMovieCast(int movieId, List<Integer> castIds) {
+        for (Integer castId : castIds) {
+            registerMapper.insertMovieCast(movieId, castId);
+        }
+    }
+
+    
 
 
     public List<AnimeVO> getAnimesWithoutCategory() {
@@ -69,6 +93,10 @@ public class RegisterService {
         }
     }
 
+    // 출연진 DB에서 가져오기
+    public List<CastCategoryVO> getCastCategories() {
+        return registerMapper.selectCastCategories();
+    }
 
 
 }
