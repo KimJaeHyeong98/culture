@@ -61,97 +61,99 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
 
       <div class="register-main">
-        <!-- 영화 등록 폼 -->
-        <form
-          class="form-section"
-          action="registerMovieAdd"
-          method="post"
-          enctype="multipart/form-data"
+        <div class="register-form">
+          <!-- 영화 등록 폼 -->
+          <form
+            class="form-section"
+            action="registerMovieAdd"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <h3>영화 등록</h3>
+
+            <label>제목</label>
+            <input type="text" name="m_title" required />
+
+            <label>포스터</label>
+            <input type="file" name="file" id="poster-file-movie" required />
+            <span
+              id="filename-text-movie"
+              style="font-size: 12px; color: gray"
+            ></span>
+
+            <label>개봉일</label>
+            <input type="date" name="m_release_date" required />
+
+            <label>감독</label>
+            <input type="text" name="m_director" required />
+
+            <button type="submit">영화 등록하기</button>
+          </form>
+
+          <!-- 애니 등록 폼 -->
+          <form
+            class="form-section"
+            action="registerAddAnime"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <h3>애니메이션 등록</h3>
+
+            <label>제목</label>
+            <input type="text" name="an_title" required />
+
+            <label>포스터</label>
+            <input type="file" name="file" id="poster-file-anime" required />
+            <span
+              id="filename-text-anime"
+              style="font-size: 12px; color: gray"
+            ></span>
+
+            <label>방영일</label>
+            <input type="date" name="an_release_date" required />
+
+            <label>감독</label>
+            <input type="text" name="an_director" required />
+
+            <button type="submit">애니 등록하기</button>
+          </form>
+
+          <!-- 게임 등록 폼 -->
+          <form
+            class="form-section"
+            action="registerAddGame"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <h3>게임 등록</h3>
+
+            <label>제목</label>
+            <input type="text" name="g_title" required />
+
+            <label>포스터</label>
+            <input type="file" name="file" id="poster-file-game" required />
+            <span
+              id="filename-text-game"
+              style="font-size: 12px; color: gray"
+            ></span>
+            <label>출시일</label>
+            <input type="date" name="g_release_date" required />
+
+            <label>제작사</label>
+            <input type="text" name="g_director" required />
+
+            <button type="submit">게임 등록하기</button>
+          </form>
+        </div>
+        <button
+          type="submit"
+          onclick="cast_of_categories()"
+          class="cast_of_categories"
         >
-          <h3>영화 등록</h3>
-
-          <label>제목</label>
-          <input type="text" name="m_title" required />
-
-          <label>포스터</label>
-          <input type="file" name="file" id="poster-file-movie" required />
-          <span
-            id="filename-text-movie"
-            style="font-size: 12px; color: gray"
-          ></span>
-
-          <label>개봉일</label>
-          <input type="date" name="m_release_date" required />
-
-          <label>감독</label>
-          <input type="text" name="m_director" required />
-
-          <button type="submit">영화 등록하기</button>
-        </form>
-
-        <!-- 애니 등록 폼 -->
-        <form
-          class="form-section"
-          action="registerAddAnime"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <h3>애니메이션 등록</h3>
-
-          <label>제목</label>
-          <input type="text" name="an_title" required />
-
-          <label>포스터</label>
-          <input type="file" name="file" id="poster-file-anime" required />
-          <span
-            id="filename-text-anime"
-            style="font-size: 12px; color: gray"
-          ></span>
-
-          <label>방영일</label>
-          <input type="date" name="an_release_date" required />
-
-          <label>감독</label>
-          <input type="text" name="an_director" required />
-
-          <button type="submit">애니 등록하기</button>
-        </form>
-
-        <!-- 게임 등록 폼 -->
-        <form
-          class="form-section"
-          action="registerAddGame"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <h3>게임 등록</h3>
-
-          <label>제목</label>
-          <input type="text" name="g_title" required />
-
-          <label>포스터</label>
-          <input type="file" name="file" id="poster-file-game" required />
-          <span
-            id="filename-text-game"
-            style="font-size: 12px; color: gray"
-          ></span>
-          <label>출시일</label>
-          <input type="date" name="g_release_date" required />
-
-          <label>제작사</label>
-          <input type="text" name="g_director" required />
-
-          <button type="submit">게임 등록하기</button>
-        </form>
+          등록 작품 세부 설정
+        </button>
       </div>
     </div>
-    <button
-      type="submit"
-      onclick="cast_of_categories()"
-      class="cast_of_categories"
-    >
-      장르 출연진 등록하러가기
-    </button>
 
     <c:if test="${registerSuccess}">
       <script>
