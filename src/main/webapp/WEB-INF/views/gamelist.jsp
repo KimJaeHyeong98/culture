@@ -68,7 +68,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           "
         >
           <!-- 게임 메인페이지 -->
-          <div class="game-title">GAME</div>
+          <div class="game-title">모든 게임</div>
           <div class="game-wrap" style="height: 655px;">
             <c:forEach var="game" items="${games}">
               <div class="game-review">

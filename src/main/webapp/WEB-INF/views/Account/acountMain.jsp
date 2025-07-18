@@ -7,21 +7,20 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
- <link href="resources/css/account.css" rel="stylesheet" />
+    <link href="resources/css/account.css" rel="stylesheet" />
   </head>
   <body>
     <c:if test="${addMembership}">
-  <script>
-    alert("회원가입 성공!");
-   
-  </script>
-</c:if>
-     <div class="account-container">
-    <h3>내 계정</h3>
-    <div class="btn-group">
-      <button onclick="location.href='login'">로그인</button>
-      <button onclick="location.href='account'">회원가입</button>
+      <script>
+        alert("회원가입 성공!");
+      </script>
+    </c:if>
+    <div class="account-container">
+      <h3>계정</h3>
+      <div class="btn-group">
+        <button onclick="location.href='login'">로그인</button>
+        <button onclick="location.href='account'">회원가입</button>
+      </div>
     </div>
-  </div>
   </body>
 </html>

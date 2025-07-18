@@ -34,13 +34,13 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
 
       /* 모달 내용 상자 */
       .modal-content {
-        background-color: #fff;
+        background-color: rgba(53, 53, 53, 0.9);
         margin: 10% auto;
         padding: 20px;
         border-radius: 10px;
         width: 400px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        color: black;
+        color: white;
       }
     </style>
   </head>
@@ -187,6 +187,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
               name="reviewText"
               rows="5"
               cols="50"
+              style="background-color: rgb(210, 210, 210)"
             ></textarea>
           </div>
 
