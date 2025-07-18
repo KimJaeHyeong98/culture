@@ -26,7 +26,7 @@ return; } %>
           <button class="register-btn" onclick="register()">신작 등록</button>
         </div>
       </c:if>
-
+ 
       <div class="btn-group">
         <button onclick="logout()" class="logout-btn">로그아웃</button>
 

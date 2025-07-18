@@ -2,6 +2,7 @@ package com.culture.review.latestReview;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
@@ -74,8 +75,26 @@ public interface LatestReviewMapper {
     })
     List<LatestReviewVO> selectAllReview();
 
+    // @Select("""
+    // SELECT
+    // m.m_title AS title,
+    // TO_CHAR(m.m_release_date, 'YYYY-MM-DD') AS releaseDate,
+    // LISTAGG(c.c_category_name, ', ')
+    // WITHIN GROUP (ORDER BY c.c_category_name) AS categoryList
+    // FROM
+    // m_movie m
+    // LEFT JOIN m_movie_category mc ON m.m_movie_id = mc.m_movie_id
+    // LEFT JOIN c_category c ON mc.c_category_id = c.c_category_id
+    // WHERE
+    // LOWER(m.m_title) LIKE '%' || LOWER(#{keyword}) || '%'
+    // GROUP BY
+    // m.m_title, m.m_release_date
+    // """)
+    // List<SearchResultVO> searchMoviesByKeyword(@Param("keyword") String keyword);
+
     @Select("""
                 SELECT
+                    m.m_movie_id AS id,
                     m.m_title AS title,
                     TO_CHAR(m.m_release_date, 'YYYY-MM-DD') AS releaseDate,
                     LISTAGG(c.c_category_name, ', ')
@@ -87,7 +106,7 @@ public interface LatestReviewMapper {
                 WHERE
                     LOWER(m.m_title) LIKE '%' || LOWER(#{keyword}) || '%'
                 GROUP BY
-                    m.m_title, m.m_release_date
+                    m.m_movie_id, m.m_title, m.m_release_date
             """)
     List<SearchResultVO> searchMoviesByKeyword(@Param("keyword") String keyword);
 
@@ -124,4 +143,44 @@ public interface LatestReviewMapper {
                     g.g_title, g.g_release_date
             """)
     List<SearchResultVO> searchGame(@Param("keyword") String keyword);
+
+    @Insert("""
+                INSERT INTO r_review (
+                    r_review_id,
+                    u_user_pk,
+                    r_content_type,
+                    r_content_id,
+                    r_content,
+                    r_recommend_yn,
+                    r_review_date
+                ) VALUES (
+                    r_review_seq.NEXTVAL,
+                    #{userPk},
+                    #{contentType},
+                    #{contentId},
+                    #{reviewText},
+                    #{reviewRecommend},
+                    SYSDATE
+                )
+            """)
+    void insertReview(NewReviewVO newReviewVO);
+
+    @Insert("""
+                INSERT INTO rt_rating (
+                    rt_rating_id,
+                    u_user_pk,
+                    rt_content_type,
+                    rt_content_id,
+                    rt_score,
+                    rt_rating_date
+                ) VALUES (
+                    rt_rating_seq.NEXTVAL,
+                    #{userPk},
+                    #{contentType},
+                    #{contentId},
+                    #{reviewRating},
+                    SYSDATE
+                )
+            """)
+    void insertRating(NewReviewVO newReviewVO);
 }
