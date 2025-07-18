@@ -187,7 +187,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
               name="reviewText"
               rows="5"
               cols="50"
-              style="background-color: rgb(211, 211, 211)"
+              style="background-color: rgb(210, 210, 210)"
             ></textarea>
           </div>
 
