@@ -66,10 +66,7 @@ public class RegisterService {
         }
     }
 
-    // 출연진 DB에서 가져오기
-    public List<CastCategoryVO> getCastCategories() {
-        return registerMapper.selectCastCategories();
-    }
+    
 
 
     public List<AnimeVO> getAnimesWithoutCategory() {
@@ -96,6 +93,10 @@ public class RegisterService {
         }
     }
 
+    // 출연진 DB에서 가져오기
+    public List<CastCategoryVO> getCastCategories() {
+        return registerMapper.selectCastCategories();
+    }
 
 
 }

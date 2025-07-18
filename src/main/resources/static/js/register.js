@@ -98,34 +98,42 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentLi = null; // 전역에 추가
 
 function openCategoryModal(type, id, liElement) {
+  // 출연진 전용 선택창 보여주거나 숨기기
+  const categorySelectContainer = document.getElementById(
+    "categorySelectContainer"
+  );
+  const castCategoryWrapper = document.getElementById("castCategoryWrapper");
+
   // 모든 hidden input 초기화
   document.getElementById("selectedMovieId").value = "";
   document.getElementById("selectedAnimeId").value = "";
   document.getElementById("selectedGameId").value = "";
   document.getElementById("selectedMovieCastId").value = "";
+  categorySelectContainer.innerHTML = "";
 
-  // 출연진 전용 선택창 보여주거나 숨기기
-  const castCategoryWrapper = document.getElementById("castCategoryWrapper");
-  const categorySelectContainer = document.getElementById(
-    "categorySelectContainer"
-  );
+  categorySelectContainer.innerHTML = "";
 
   if (type === "MOVIE") {
     document.getElementById("selectedMovieId").value = id;
     castCategoryWrapper.style.display = "none";
     categorySelectContainer.style.display = "block";
+    addCategorySelect();
   } else if (type === "ANIME") {
     document.getElementById("selectedAnimeId").value = id;
     castCategoryWrapper.style.display = "none";
     categorySelectContainer.style.display = "block";
+    addCategorySelect();
   } else if (type === "GAME") {
     document.getElementById("selectedGameId").value = id;
     castCategoryWrapper.style.display = "none";
     categorySelectContainer.style.display = "block";
+    addCategorySelect();
   } else if (type === "MOVIECAST") {
     document.getElementById("selectedMovieCastId").value = id;
     castCategoryWrapper.style.display = "block";
     categorySelectContainer.style.display = "none";
+
+    loadCastCategories();
   }
 
   currentLi = liElement;
@@ -259,6 +267,7 @@ function loadCastCategories() {
   fetch("/cast-categories")
     .then((res) => res.json())
     .then((data) => {
+      console.log("출연진 목록", data);
       data.forEach((category) => {
         const option = document.createElement("option");
         option.value = category.id;
