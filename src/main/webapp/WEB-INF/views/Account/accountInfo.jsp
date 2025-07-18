@@ -49,7 +49,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
             <li>애니메이션</li>
             <li>영화</li>
             <li>태그</li>
-           <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
+            <li><a href="<c:url value='/latestReview-all'/>">유저 리뷰</a></li>
             <li>토론</li>
             <li>FAQ</li>
             <li>랜덤</li>
@@ -81,6 +81,9 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
         </div>
 
         <div class="info-btn-group" id="buttonArea">
+          <form style="margin-bottom: 10px;" id="myReviewForm" action="/myReview" method="post">
+            <button type="submit" class="info-btn">나의 리뷰 수정</button>
+          </form>
           <button class="info-btn" onclick="enableEdit()">회원정보 수정</button>
           <button class="info-btn delete" onclick="deleteAccount()">
             회원탈퇴
@@ -94,6 +97,8 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
         u_password: "${userInfo.u_password}",
         u_user_name: "${userInfo.u_user_name}",
       };
+
+    
     </script>
     <script src="/resources/js/accountInfo.js"></script>
   </body>

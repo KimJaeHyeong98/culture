@@ -1,8 +1,13 @@
 package com.culture.review.Account;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import com.culture.review.vo.ReviewVO;
+
 import jakarta.servlet.http.HttpSession;
 
 @Service
@@ -55,4 +60,20 @@ public class AccountService {
         return accountMapper.deleteByPk(pk);
     }
 
+    // 나의 전체리뷰 select
+    public List<MyReviewVO> getMyReview(Integer userPk) {
+        List<MyReviewVO> reviews = accountMapper.selectReviewsByUser(userPk);
+        System.out.println(reviews);
+        return reviews;
+    }
+
+    // 나의 리뷰 수정
+    public void updateReviewAndRecommend(Integer reviewId, String content, String recommendYn) {
+        accountMapper.updateReviewAndRecommend(reviewId, content, recommendYn);
+    }
+
+    //나의 리뷰 삭제
+    public void deleteReviewById(Integer reviewId) {
+    accountMapper.deleteReviewById(reviewId);
+}
 }

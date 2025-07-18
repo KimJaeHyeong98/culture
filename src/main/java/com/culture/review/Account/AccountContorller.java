@@ -1,5 +1,8 @@
 package com.culture.review.Account;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -100,23 +103,6 @@ public class AccountContorller {
         return ResponseEntity.ok(isAvailable ? "AVAILABLE" : "DUPLICATE");
     }
 
-    // // 마이페이지 컨트롤러
-    // @GetMapping("/mypage")
-    // public String mypage(HttpSession session, Model model) {
-    // AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
-
-    // if (loginUser == null) {
-    // // 로그인 안 된 경우 로그인 페이지로 리다이렉트
-    // model.addAttribute("content", "account/login.jsp");
-    // return "sample";
-    // }
-
-    // // 로그인된 사용자일 경우 처리
-    // model.addAttribute("user", loginUser);
-    // model.addAttribute("content", "account/mypage.jsp");
-    // return "sample";
-    // }
-
     // 마이페이지 컨트롤러
     @PostMapping("/myPageInfo")
     public String showMyPage(HttpSession session, Model model) {
@@ -164,7 +150,7 @@ public class AccountContorller {
         AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
 
         if (loginUser == null) {
-          model.addAttribute("content", "account/acountMain.jsp");
+            model.addAttribute("content", "account/acountMain.jsp");
             return "sample";
         }
 
@@ -177,4 +163,43 @@ public class AccountContorller {
         }
     }
 
+    @PostMapping("/myReview")
+    public String getMyReview(HttpSession session, Model model, AccountVO accountVO) {
+        AccountVO loginUser = (AccountVO) session.getAttribute("loginUser");
+
+        if (loginUser == null) {
+            return "redirect:/login"; // 로그인 안 돼 있으면 로그인 페이지로
+        }
+        Integer userPk = loginUser.getU_user_pk();
+        System.out.println(userPk);
+
+        // 리뷰 목록 조회
+        List<MyReviewVO> myReviews = accountService.getMyReview(userPk);
+
+        model.addAttribute("myReview", myReviews);
+        model.addAttribute("content", "../account/good.jsp");
+
+        return "account/myReviewPage";
+    }
+
+    // 나의 리뷰 업데이트
+    @PostMapping("/updateReview")
+    @ResponseBody
+    public String updateReview(@RequestBody Map<String, Object> data) {
+        Integer reviewId = null;
+        try {
+            reviewId = ((Number) data.get("reviewId")).intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "FAIL";
+        }
+
+        String content = (String) data.get("content");
+        String recommendYn = (String) data.get("recommendYn");
+
+        accountService.updateReviewAndRecommend(reviewId, content, recommendYn);
+        return "OK";
+    }
+
+   
 }
