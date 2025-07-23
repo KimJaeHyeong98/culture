@@ -84,30 +84,30 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <span class="tab" data-type="average">평균값</span>
             </div>
             <div class="ranking-list">
-              <ol class="median-list">
-                <li>게임1　　○○점</li>
-                <li>게임2　　○○점</li>
-                <li>게임3　　○○점</li>
-                <li>게임4　　○○점</li>
-                <li>게임5　　○○점</li>
-                <li>게임6　　○○점</li>
-                <li>게임7　　○○점</li>
-                <li>게임8　　○○점</li>
-                <li>게임9　　○○점</li>
-                <li>게임0　　○○점</li>
-              </ol>
-              <ol class="average-list">
-                <li>게임1　　□□점</li>
-                <li>게임2　　□□점</li>
-                <li>게임3　　□□점</li>
-                <li>게임4　　□□점</li>
-                <li>게임5　　□□점</li>
-                <li>게임6　　□□점</li>
-                <li>게임7　　□□점</li>
-                <li>게임8　　□□점</li>
-                <li>게임9　　□□점</li>
-                <li>게임0　　□□점</li>
-              </ol>
+              <ul class="median-list">
+                <li>97점 | Hollow Knight</li>
+                <li>97점 | Monster Hunter: World</li>
+                <li>95점 | The Division 2</li>
+                <li>94점 | Minecraft</li>
+                <li>91점 | League of Legends</li>
+                <li>91점 | Terraria</li>
+                <li>90점 | The Witcher 3: Wild Hunt</li>
+                <li>90점 | Grand Theft Auto V</li>
+                <li>89점 | Cyberpunk 2077</li>
+                <li>89점 | Among Us</li>
+              </ul>
+              <ul class="average-list">
+                <li>95점 | Monster Hunter: World</li>
+                <li>95점 | Minecraft</li>
+                <li>94점 | The Witcher 3: Wild Hunt</li>
+                <li>94점 | Hollow Knight</li>
+                <li>94점 | Grand Theft Auto V</li>
+                <li>92점 | League of Legends</li>
+                <li>91점 | Cyberpunk 2077</li>
+                <li>90점 | Among Us</li>
+                <li>90점 | The Division 2</li>
+                <li>88점 | Terraria</li>
+              </ul>
             </div>
           </div>
 
@@ -121,30 +121,30 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <span class="tab" data-type="average">평균값</span>
             </div>
             <div class="ranking-list">
-              <ol class="median-list">
-                <li>애니1　　○○점</li>
-                <li>애니2　　○○점</li>
-                <li>애니3　　○○점</li>
-                <li>애니4　　○○점</li>
-                <li>애니5　　○○점</li>
-                <li>애니6　　○○점</li>
-                <li>애니7　　○○점</li>
-                <li>애니8　　○○점</li>
-                <li>애니9　　○○점</li>
-                <li>애니0　　○○점</li>
-              </ol>
-              <ol class="average-list">
-                <li>애니1　　□□점</li>
-                <li>애니2　　□□점</li>
-                <li>애니3　　□□점</li>
-                <li>애니4　　□□점</li>
-                <li>애니5　　□□점</li>
-                <li>애니6　　□□점</li>
-                <li>애니7　　□□점</li>
-                <li>애니8　　□□점</li>
-                <li>애니9　　□□점</li>
-                <li>애니0　　□□점</li>
-              </ol>
+              <ul class="median-list">
+                <li>99점 | 진격의 거인</li>
+                <li>98점 | 코드기어스</li>
+                <li>97점 | 명탐정 코난</li>
+                <li>97점 | 데스노트</li>
+                <li>97점 | 클라나드</li>
+                <li>96점 | 페이트 스테이 나이트</li>
+                <li>95점 | 서머 포켓츠</li>
+                <li>94점 | 카케구루이</li>
+                <li>94점 | 러브라이브</li>
+                <li>93점 | 원펀맨</li>
+              </ul>
+              <ul class="average-list">
+                <li>98점 | 진격의 거인</li>
+                <li>97점 | 클라나드</li>
+                <li>96점 | 페이트 스테이 나이트</li>
+                <li>96점 | 서머 포켓츠</li>
+                <li>96점 | 코드기어스</li>
+                <li>94점 | 데스노트</li>
+                <li>93점 | 명탐정 코난</li>
+                <li>93점 | 러브라이브</li>
+                <li>91점 | 원펀맨</li>
+                <li>90점 | 카케구루이</li>
+              </ul>
             </div>
           </div>
 
@@ -158,30 +158,30 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <span class="tab" data-type="average">평균값</span>
             </div>
             <div class="ranking-list">
-              <ol class="median-list">
-                <li>영화1　　○○점</li>
-                <li>영화2　　○○점</li>
-                <li>영화3　　○○점</li>
-                <li>영화4　　○○점</li>
-                <li>영화5　　○○점</li>
-                <li>영화6　　○○점</li>
-                <li>영화7　　○○점</li>
-                <li>영화8　　○○점</li>
-                <li>영화9　　○○점</li>
-                <li>영화0　　○○점</li>
-              </ol>
-              <ol class="average-list">
-                <li>영화1　　□□점</li>
-                <li>영화2　　□□점</li>
-                <li>영화3　　□□점</li>
-                <li>영화4　　□□점</li>
-                <li>영화5　　□□점</li>
-                <li>영화6　　□□점</li>
-                <li>영화7　　□□점</li>
-                <li>영화8　　□□점</li>
-                <li>영화9　　□□점</li>
-                <li>영화0　　□□점</li>
-              </ol>
+              <ul class="median-list">
+                <li>99점 | 인터스텔라</li>
+                <li>99점 | 어벤져스: 엔드게임</li>
+                <li>98점 | 너의 이름은.</li>
+                <li>97점 | 인셉션</li>
+                <li>95점 | 기생충</li>
+                <li>95점 | 라라랜드</li>
+                <li>95점 | 인사이드 아웃</li>
+                <li>94점 | 조커</li>
+                <li>92점 | 탑건: 매버릭</li>
+                <li>91점 | 타이타닉</li>
+              </ul>
+              <ul class="average-list">
+                <li>98점 | 인터스텔라</li>
+                <li>97점 | 어벤져스: 엔드게임</li>
+                <li>95점 | 너의 이름은.</li>
+                <li>95점 | 기생충</li>
+                <li>94점 | 탑건: 매버릭</li>
+                <li>93점 | 조커</li>
+                <li>91점 | 라라랜드</li>
+                <li>90점 | 인셉션</li>
+                <li>89점 | 타이타닉</li>
+                <li>88점 | 인사이드 아웃</li>
+              </ul>
             </div>
           </div>
         </div>
